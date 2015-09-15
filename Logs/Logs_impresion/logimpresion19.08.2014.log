@@ -1,0 +1,36 @@
+INFO ADV.surtidores,line 9895,19.08.2014/11:37:09,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/11:55:40,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:04:34,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:14:49,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:24:01,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:44:45,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 10488,19.08.2014/12:44:45,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'tipo_pago' in 'field list'
+INFO ADV.surtidores,line 9895,19.08.2014/12:44:50,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 10488,19.08.2014/12:44:50,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'tipo_pago' in 'field list'
+INFO ADV.surtidores,line 9895,19.08.2014/12:46:54,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:48:11,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:52:26,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:53:04,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:53:32,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/12:53:38,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/14:59:26,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/15:00:21,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/15:13:13,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/15:34:18,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/15:34:32,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:08:35,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:10:33,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:13:37,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:14:55,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:18:26,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:18:55,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:24:28,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/16:25:53,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/17:16:25,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/17:33:49,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/17:34:16,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9894,19.08.2014/17:36:37,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/17:43:06,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/17:45:31,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/17:45:51,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4
+INFO ADV.surtidores,line 9895,19.08.2014/17:46:06,Maguera: 1Producto: ExtraVolumen :5.00Precio Unit: 1.480Iva: 0.8subtotal :6.6total: 7.4

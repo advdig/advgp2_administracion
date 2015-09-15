@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estado_cuenta_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a1c9f250-8e17-4651-a367-f02b8962ad7b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pagare.`idpagare` AS npagare,
+     pagare.`total` AS pagare_total,
+     pagare.`cantidad` AS pagare_cantidad,
+     pagare.`fecha` AS pagare_fecha,
+     pagare.`hora` AS pagare_hora,
+     pagare.`placa` AS pagare_placa,
+    (SELECT numero FROM adv_facturacion.factura where idfactura=pagare.factura_idfactura limit 1)
+FROM
+     `cliente` cliente INNER JOIN `pagare` pagare ON cliente.`idcliente` = pagare.`cliente_idcliente`
+WHERE
+     idcliente = $P{cliente}
+     and pagare.fecha BETWEEN $P{fechai} and $P{fechaf}
+     and pagare.facturado = 1
+order by factura_idfactura]]>
+	</queryString>
+	<field name="npagare" class="java.lang.Integer"/>
+	<field name="pagare_total" class="java.math.BigDecimal"/>
+	<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+	<field name="pagare_fecha" class="java.sql.Date"/>
+	<field name="pagare_hora" class="java.sql.Time"/>
+	<field name="pagare_placa" class="java.lang.String"/>
+	<field name="(SELECT numero FROM adv_facturacion.factura where idfactura=pagare.factura_idfactura limit 1)" class="java.lang.String"/>
+	<variable name="pagare_cantidad_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{pagare_cantidad}]]></variableExpression>
+	</variable>
+	<variable name="pagare_total_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagare_total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="82" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="bd6e5d1b-c7a9-43a4-a6f2-210bce712710" x="0" y="61" width="555" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b7cd0eed-0723-4847-8296-1f416fb950ad" x="0" y="61" width="84" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº de Pagare]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb6df408-4012-4ea7-8fce-21270c6f83c1" x="84" y="61" width="68" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a08848b-ed0c-4046-9855-7586ae228b3a" x="152" y="62" width="67" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f330f2e-fb40-4da2-a352-ac56471cd325" x="219" y="62" width="65" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="385eb190-2d40-447d-9228-c9b7824ea2f6" x="384" y="61" width="71" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="267e49db-605a-4d7a-9c20-5f20fcf47d09" x="455" y="61" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Placa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3bf3ef58-426d-4ee1-ba6c-c3095d291666" x="284" y="62" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Numero Factura]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="9b545432-1122-443f-8c25-889b46b16999" x="0" y="0" width="555" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="055c37a9-da40-45cd-9e1f-58d22f550a91" x="0" y="0" width="84" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{npagare}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="80191c2e-9122-4fa2-8f35-df65fc4c1d4a" x="152" y="0" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="e1772169-408f-4ff7-bdf8-d7b7235680b6" x="219" y="0" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm.ss">
+				<reportElement uuid="e05034d3-f0f0-4cf3-aa94-8b0253bbc488" x="384" y="0" width="71" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="98209988-b228-42af-9bf1-0062d040b2c2" x="455" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_placa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d3f9f43f-6430-4787-9652-3faeb15254a1" x="83" y="0" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="94cc8f87-d9c3-45d7-8e4c-1b25ea6365ad" x="285" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{(SELECT numero FROM adv_facturacion.factura where idfactura=pagare.factura_idfactura limit 1)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="26">
+			<textField>
+				<reportElement uuid="7de58f9a-0a89-4f71-8cb2-064de57902f4" x="114" y="0" width="67" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{pagare_cantidad_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="58b50190-c506-4052-95bb-9005e6163575" x="0" y="0" width="114" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero de Pagares:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e6e55583-146a-41d2-bcef-f341d636272c" x="219" y="0" width="105" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Dinero Pagares:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d6431fc6-ae02-4e94-816d-1905504b95a0" x="324" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{pagare_total_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,46 @@
+! Claudio Vallejo
+Huayna Capac
+RUC:0102595295001
+---------------------------------
+Ticket de Ingreso    
+                 
+---------------------------------
+Ingreso de turno usuario:
+Juan Gonzalez
+Hora de Ingreso 15:08:52
+
+Fecha 2014-10-27
+M:1|  Monto:0.0|    Vol:0.0
+M:2|  Monto:0.0|    Vol:0.0
+M:3|  Monto:0.0|    Vol:0.0
+M:4|  Monto:0.0|    Vol:0.0
+M:5|  Monto:0.0|    Vol:0.0
+M:6|  Monto:0.0|    Vol:0.0
+M:7|  Monto:0.0|    Vol:0.0
+M:8|  Monto:0.0|    Vol:0.0
+M:9|  Monto:0.0|    Vol:0.0
+M:10|  Monto:0.0|    Vol:0.0
+M:11|  Monto:0.0|    Vol:0.0
+M:12|  Monto:0.0|    Vol:0.0
+M:13|  Monto:0.0|    Vol:0.0
+M:14|  Monto:0.0|    Vol:0.0
+M:15|  Monto:0.0|    Vol:0.0
+M:16|  Monto:0.0|    Vol:0.0
+                                 
+                                 
+                                 
+                                 
+   ............................... 
+           Firma Despachador     
+         Advantech Digital        
+        2829421 - 0999064457      
+         Huayna-Capac  3-35     
+
+
+
+
+
+
+
+
+i

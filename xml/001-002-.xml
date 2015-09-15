@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<factura version="&quot;2_00&quot;">
+  <infoTributaria>
+    <razonSocial>adv</razonSocial>
+    <ruc>010121512</ruc>
+    <numAut>02215132</numAut>
+    <codDoc>1</codDoc>
+    <estab>002</estab>
+    <ptoEmi>001</ptoEmi>
+    <secuencial />
+    <fechaAutorizacion />
+    <caducidad />
+    <fechaEmision>14-07-2014</fechaEmision>
+    <dirMatriz>jajaoijiojaj</dirMatriz>
+    <razonSocialComprador>Juan Gonzalez</razonSocialComprador>
+    <totalConImpuestos>3.18</totalConImpuestos>
+    <moneda>Dolares Americanos</moneda>
+  </infoTributaria>
+  <detalles>
+    <detalle>
+      <concepto>Venta de combustible</concepto>
+      <producto>Extra</producto>
+      <cantidad>2.154</cantidad>
+      <precioUnitario>1.48</precioUnitario>
+      <precioTotal>1.77</precioTotal>
+    </detalle>
+  </detalles>
+  <infoAdicional />
+</factura>
+

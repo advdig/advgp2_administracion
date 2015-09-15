@@ -1,0 +1,40 @@
+!R!Estacion de Servicio Banos
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Factura #:    001-051-000000213
+Razon Social/Nombres y Apellidos:
+GONZALEZ JARA JUAN ANDRES
+Ruc/CI: 0106520331
+Fecha Emision: 2015-02-13
+-------------------
+Cod Principal: 3
+Cantidad:      100.000
+Descripcion:   Diesel
+Precio Unitario:0.926
+Precio Total:  92.59
+-------------------
+Subtotal 12%: 92.59
+IVA 12%:      11.11
+Valor Total:  103.7
+-------------------
+CLAVE DE ACCESO: 
+1302201501010259529500110010510000002131234567818
+AUTORIZACION S.R.I.: 
+1302201509235401025952950010216613411
+FECHA Y HORA AUTORIZACION:
+2015-02-13 09:24:04
+AMBIENTE:Pruebas EMISION: NORMAL
+-------------------
+ SISTEMA ADV-BOX -ADVANTECH
+  2829421 - 0999064457
+                                     
+                                     
+                                     
+
+
+
+
+
+i

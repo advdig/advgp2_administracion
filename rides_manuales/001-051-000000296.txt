@@ -1,0 +1,45 @@
+!R!Estacion de Servicio Banos
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Factura #:    001-051-000000296
+Razon Social/Nombres y Apellidos:
+MARQUEZ MORENO RICARDO VICENTE
+Ruc/CI: 0100000033001
+Fecha Emision: 2015-02-19
+-------------------
+Cod Principal: 1
+Cantidad:      5.459
+Descripcion:   Extra
+Precio Unitario:1.321
+Precio Total:  7.21
+-------------------
+Subtotal 12%: 7.21
+IVA 12%:      0.87
+Valor Total:  8.08
+-------------------
+CLAVE DE ACCESO: 
+0102595295001100000000000000000009989
+AUTORIZACION S.R.I.: 
+
+FECHA Y HORA AUTORIZACION:
+AMBIENTE:Pruebas EMISION: CONTINGENCIA
+-------------------
+ SISTEMA ADV-BOX -ADVANTECH
+  2829421 - 0999064457
+ESTA FACTURA FUE EMITIDA EN CONTINGENCIA
+USTED PODRA CONSULTAR SU FACTURA
+AUTORIZADA EN 24 HORAS EN LA 
+PAGINA WEB DEL SRI
+/COMPROBANTES ELECTRONICOS
+http://www.sri.gob.ec
+                                     
+                                     
+                                     
+
+
+
+
+
+i

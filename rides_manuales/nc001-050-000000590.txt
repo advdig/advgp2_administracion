@@ -1,0 +1,37 @@
+!R!Estacion de Servicio Banos
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Nota de Credito #:    001-050-000000590
+# de Autorizacion: 
+ Fecha  Autorizacion:
+Clave de Acceso:
+0102595295001100000000000000000009911
+Razon Social/Nombres y Apellidos:
+HIDALGO E HIDALGO S.A
+Ruc/CI: 1790059111001
+Fecha Emision: 2015-02-19
+-------------------
+Cod Principal: 1
+Descripcion: Extra
+Precio Unitario: 1.32
+Cantidad: 7.588
+Subtotal: 94.41
+IVA: 11.33
+Total Nota de Credito: 105.74
+-------------------
+Nota de Credito a la factura #: 
+001-051-000000281
+-------------------
+       SISTEMA ADV-BOX -ADVANTECH     
+           2829421 - 0999064457      
+
+
+
+
+
+
+
+
+i

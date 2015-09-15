@@ -1,0 +1,37 @@
+!R!Estacion de Servicio Ba|os
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Nota de Credito #:    001-050-000000517
+# de Autorizacion: 
+ Fecha  Autorizacion:
+Clave de Acceso:
+1009201401010259529500110000000000000000000005125
+Razon Social/Nombres y Apellidos:
+RIVERA AGUIRRE JORGE EDUARDO
+Ruc/CI: 0502529837001
+Fecha Emision: 2015-02-05
+-------------------
+Cod Principal: 2
+Descripcion: Super
+Precio Unitario: 1.95
+Cantidad: 0.460
+Subtotal: 0.89
+IVA: 0.11
+Total Nota de Credito: 1.00
+-------------------
+Nota de Credito a la factura #: 
+001-001-000012020
+-------------------
+       SISTEMA ADV-BOX -ADVANTECH     
+           2829421 - 0999064457      
+
+
+
+
+
+
+
+
+i

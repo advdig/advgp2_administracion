@@ -1,0 +1,52 @@
+!R!Estacion de Servicio Ba|os
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Factura #:    001-002-000000115
+Razon Social/Nombres y Apellidos:
+VALLEJO PINTADO VICTOR CLAUDIO
+Ruc/CI: 0102595295001
+Fecha Emision: 2015-01-24
+-------------------
+Cod Principal: 1
+Cantidad:      500.000
+Descripcion:   Extra
+Precio Unitario:1.321
+Precio Total:  660.71
+-------------------
+Cod Principal: 2
+Cantidad:      1000.000
+Descripcion:   Super
+Precio Unitario:1.954
+Precio Total:  1954.46
+-------------------
+Cod Principal: 3
+Cantidad:      1.000
+Descripcion:   Diesel
+Precio Unitario:0.930
+Precio Total:  0.93
+-------------------
+Subtotal 12%: 2616.1
+IVA 12%:      313.93
+Valor Total:  2930.03
+-------------------
+CLAVE DE ACCESO: 
+2401201501010259529500110010020000001151234567819
+AUTORIZACION S.R.I.: 
+2401201513211001025952950010207939101
+FECHA Y HORA AUTORIZACION:
+2015-01-24 13:21:26
+AMBIENTE:Pruebas EMISION: NORMAL
+-------------------
+ SISTEMA ADV-BOX -ADVANTECH
+  2829421 - 0999064457
+                                     
+                                     
+                                     
+
+
+
+
+
+i

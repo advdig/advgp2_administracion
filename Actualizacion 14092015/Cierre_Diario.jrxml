@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="dd12dd5c-b9f2-446d-afc9-b1d76165cf30">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="731"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="Cierre Diario" uuid="158e8d6c-b176-4c32-9a65-f0212cec4265">
+		<parameter name="desde" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="hasta" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="horai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="horaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select m as manguera,sum(c) as cantidad,pu as PrecioUnitario,sum(t) as Total from
+(Select
+    adv_facturacion.pagare.configuracion_nmanguera as m,
+    round(Sum(adv_facturacion.pagare.cantidad),4) as c,
+    adv_facturacion.pagare.punit as pu,
+    round(Sum(adv_facturacion.pagare.total),2) as t
+  From
+    adv_facturacion.pagare
+	where (CONVERT(concat_ws(' ', fecha, hora),DATETIME) >= CONVERT(concat($P{desde}," ", $P{horai}) ,DATETIME) and CONVERT(concat_ws(' ', fecha, hora),DATETIME) <= CONVERT(concat($P{hasta}," ",$P{horaf}),DATETIME))
+    and adv_facturacion.pagare.configuracion_nmanguera<>0
+    and adv_facturacion.pagare.despacho=0
+  Group By
+    adv_facturacion.pagare.configuracion_nmanguera
+union all
+Select
+    adv_facturacion.factura_detalle.configuracion_nmanguera as m1,
+    round(Sum(adv_facturacion.factura_detalle.cantidad),4) as c1,
+    adv_facturacion.factura_detalle.p_unit as pu1,
+    round(Sum(adv_facturacion.factura_detalle.total),2) as t1
+  From
+    adv_facturacion.factura_detalle,adv_facturacion.factura
+  where (CONVERT(concat_ws(' ', fecha, hora),DATETIME) >= CONVERT(concat($P{desde}," ", $P{horai}) ,DATETIME) and CONVERT(concat_ws(' ', fecha, hora),DATETIME) <= CONVERT(concat($P{hasta}," ",$P{horaf}),DATETIME))
+  and adv_facturacion.factura.idfactura=adv_facturacion.factura_detalle.factura_idfactura
+  and adv_facturacion.factura_detalle.configuracion_nmanguera<>0
+  and adv_facturacion.factura.punto_emision_idpunto_emision=1
+  Group By
+    adv_facturacion.factura_detalle.configuracion_nmanguera) as u
+group by m]]>
+		</queryString>
+		<field name="manguera" class="java.lang.Integer"/>
+		<field name="cantidad" class="java.math.BigDecimal"/>
+		<field name="PrecioUnitario" class="java.math.BigDecimal"/>
+		<field name="Total" class="java.math.BigDecimal"/>
+		<variable name="ventas" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{Total}]]></variableExpression>
+		</variable>
+		<variable name="Volumen" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="Estacion" uuid="c5354d91-0df4-45b6-a116-d1b067bf2044">
+		<queryString>
+			<![CDATA[SELECT
+     datos_gasolinera.`razon_social` AS datos_gasolinera_razon_social,
+     datos_gasolinera.`ruc` AS datos_gasolinera_ruc,
+     datos_gasolinera.`direccion` AS datos_gasolinera_direccion,
+     datos_gasolinera.`nombre_comercial` AS datos_gasolinera_nombre_comercial
+FROM
+     `datos_gasolinera` datos_gasolinera]]>
+		</queryString>
+		<field name="datos_gasolinera_razon_social" class="java.lang.String"/>
+		<field name="datos_gasolinera_ruc" class="java.lang.String"/>
+		<field name="datos_gasolinera_direccion" class="java.lang.String"/>
+		<field name="datos_gasolinera_nombre_comercial" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Vendedores" uuid="600bdd1d-e686-4061-a70c-573d91d5c30a">
+		<parameter name="desde" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="hasta" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="horai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="horaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select adv_facturacion.reportes_usuario.lado,adv_facturacion.usuarios.nombre,
+round(adv_facturacion.reportes_usuario.ventas,2) as ventas,
+round(adv_facturacion.reportes_usuario.volumen,4) as volumen,
+CONCAT(fecha_inicial,' ',horai,'---',fecha_final,' ',horas)as fechas
+from adv_facturacion.reportes_usuario,adv_facturacion.usuarios
+where
+adv_facturacion.reportes_usuario.usuarios_idusuarios=adv_facturacion.usuarios.idusuarios and
+(CONVERT(concat_ws(' ', adv_facturacion.reportes_usuario.fecha_inicial, adv_facturacion.reportes_usuario.horai),DATETIME) >= CONVERT(concat($P{desde}," ",$P{horai}) ,DATETIME) and CONVERT(concat_ws(' ', adv_facturacion.reportes_usuario.fecha_final, adv_facturacion.reportes_usuario.horas),DATETIME) <= CONVERT(concat($P{hasta}," ",$P{horaf}),DATETIME))
+
+order by reportes_usuario.idreportes_usuario]]>
+		</queryString>
+		<field name="lado" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nombre" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ventas" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="volumen" class="java.math.BigDecimal">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="fechas" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Producto" uuid="94d3dc12-5259-4769-9962-818524dd1e8a">
+		<parameter name="fechai" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="fechaf" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     
+     producto.`nombre` AS producto_nombre,
+     producto.`punit` AS producto_punit,
+     sum(cierre_diario.`monto`) AS cierre_diario_monto,
+     sum(cierre_diario.`volumen`) AS cierre_diario_volumen
+FROM
+     `configuracion` configuracion INNER JOIN `cierre_diario` cierre_diario ON configuracion.`nmanguera` = cierre_diario.`configuracion_nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+WHERE
+     fecha_inicial = $P{fechai}
+     and fecha_final = $P{fechaf}
+group by  producto_idproducto]]>
+		</queryString>
+		<field name="producto_nombre" class="java.lang.String"/>
+		<field name="producto_punit" class="java.math.BigDecimal"/>
+		<field name="cierre_diario_monto" class="java.math.BigDecimal"/>
+		<field name="cierre_diario_volumen" class="java.math.BigDecimal"/>
+		<variable name="ventas" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{cierre_diario_monto}]]></variableExpression>
+		</variable>
+		<variable name="Volumen" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{cierre_diario_volumen}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="desde" class="java.lang.String"/>
+	<parameter name="hasta" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Andrea\\Documents\\NetBeansProjects\\Reportes\\src\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     round(cierre_diario.`monto`,2) AS cierre_diario_monto,
+     round(cierre_diario.`volumen`,2) AS cierre_diario_volumen,
+     cierre_diario.`configuracion_nmanguera` AS cierre_diario_configuracion_nmanguera,
+     cierre_diario.`hora_inicio` AS cierre_diario_hora_inicio,
+     cierre_diario.`hora_final` AS cierre_diario_hora_final
+FROM
+     `cierre_diario` cierre_diario
+ where fecha_inicial=$P{desde} and fecha_final=$P{hasta}]]>
+	</queryString>
+	<field name="cierre_diario_monto" class="java.math.BigDecimal"/>
+	<field name="cierre_diario_volumen" class="java.math.BigDecimal"/>
+	<field name="cierre_diario_configuracion_nmanguera" class="java.lang.Integer"/>
+	<field name="cierre_diario_hora_inicio" class="java.sql.Time"/>
+	<field name="cierre_diario_hora_final" class="java.sql.Time"/>
+	<variable name="SUM_MONTO" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{cierre_diario_monto}]]></variableExpression>
+	</variable>
+	<variable name="SUM_VOLUMEN" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{cierre_diario_volumen}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="114" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="3bb1766a-d147-40ae-887d-8e515b69e013" x="90" y="88" width="52" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DESDE EL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="35355578-3c7a-4409-8841-e9193fa76239" x="296" y="88" width="57" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[HASTA EL]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="66a38407-9b79-4afa-bc69-b76c3179c171" x="145" y="88" width="67" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{desde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a8f350db-5c44-4d43-9371-279994152cb8" x="356" y="88" width="69" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{hasta}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="e51aea5d-16f8-4f4d-ae68-c17bf565b071" x="181" y="0" width="297" height="82"/>
+				<subreport>
+					<reportElement uuid="ff76cb26-e407-4b8c-a57c-f0d7a977f7cb" x="7" y="0" width="283" height="82"/>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["Gasolinera.jasper"]]></subreportExpression>
+				</subreport>
+			</frame>
+			<image>
+				<reportElement uuid="20f15a0e-6410-449a-b57f-2bc59633055d" x="81" y="0" width="94" height="82"/>
+				<imageExpression><![CDATA["ad.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="a5429da2-ba98-4198-9256-2ba5e94efe4d" x="212" y="88" width="74" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cierre_diario_hora_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="fabc277f-6302-4988-822b-7d85d1d19876" x="429" y="88" width="75" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cierre_diario_hora_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="145924f6-ccef-41ed-882e-387925ca8c68" x="81" y="49" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MANGUERA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3cdbf6ca-509e-4d4f-a928-d409e17456fb" x="373" y="49" width="114" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9b151e8-02f9-4574-a19d-0ed3d5c836ad" x="228" y="49" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VOLUMEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="29a901e6-f7d4-4ce2-b651-7015f98873ed" x="-1" y="0" width="555" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIERRE DIARIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="d93ea5ee-34ee-4cf4-8df4-8ce313f729f5" x="394" y="2" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cierre_diario_monto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f5cf87af-1381-4a50-a685-e1671fe17987" x="373" y="2" width="21" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<textField pattern="###0.0000">
+				<reportElement uuid="42cb8c88-a1fa-4f58-8df4-340625a85045" x="228" y="2" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cierre_diario_volumen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="978594a8-72fb-48fc-97ff-bc3c7eb86129" x="81" y="2" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cierre_diario_configuracion_nmanguera}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<textField pattern="###0.00;-###0.00">
+				<reportElement uuid="da1862d2-cae9-43cb-9429-44233dcbdc7e" x="394" y="0" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_MONTO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f5cf87af-1381-4a50-a685-e1671fe17987" x="373" y="0" width="21" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="145924f6-ccef-41ed-882e-387925ca8c68" x="81" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALES]]></text>
+			</staticText>
+			<textField pattern="###0.0000;-###0.0000">
+				<reportElement uuid="77dd7096-0bc2-47e5-9cf0-585fce2cbdff" x="228" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SUM_VOLUMEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="37133e0b-5e55-451c-805a-8d05c21ef422" x="419" y="3" width="96" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="9b1c59c8-505e-4dea-bd10-fe55c3af702c" x="515" y="3" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="500073d0-455b-41df-be9d-dd01642cfed6" x="0" y="2" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<frame>
+				<reportElement uuid="caaa17c3-67de-4266-a5e3-abe93391e7dc" x="-1" y="208" width="553" height="295"/>
+				<componentElement>
+					<reportElement uuid="32aa1eaa-bfc5-4866-919a-41fa4455f643" key="table 2" style="table 2" positionType="Float" x="89" y="51" width="370" height="179"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="Cierre Diario" uuid="87cc7a39-c308-4c37-9216-43290bd77c02">
+							<datasetParameter name="desde">
+								<datasetParameterExpression><![CDATA[$P{desde}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="hasta">
+								<datasetParameterExpression><![CDATA[$P{hasta}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="horai">
+								<datasetParameterExpression><![CDATA[$F{cierre_diario_hora_inicio}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="horaf">
+								<datasetParameterExpression><![CDATA[$F{cierre_diario_hora_final}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="ae28734e-ee18-4a92-b38f-dbc0047f711b">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="6b946f25-900b-46af-a9c1-8560e25b2aad" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[MANGUERA]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="7a4f7db6-6f40-49ad-978b-afc140def823" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TOTALES]]></text>
+								</staticText>
+							</jr:columnFooter>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="b9884f53-cc24-4153-b38a-c998087d0064" x="0" y="0" width="90" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{manguera}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="e357c8c6-1881-4594-80a0-d8ec16b1ea93">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="d974f218-60f1-4517-b186-b5f824f58bfc" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[VOLUMEN]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter height="30" rowSpan="1">
+								<textField pattern="###0.0000;-###0.0000">
+									<reportElement uuid="6101a1a6-fd99-4d69-b686-3601b46173c8" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{Volumen}]]></textFieldExpression>
+								</textField>
+							</jr:columnFooter>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="472355cc-ef11-4681-bcbb-64f0504e0078" x="0" y="0" width="90" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="0fe83235-8bea-47c2-81dc-8d73dfd9433b">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="9fc9e413-28dd-4cdf-a4c4-67668819e541" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[P. UNITARIO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="041f9ef1-853d-4697-8542-88bf21045b75" x="16" y="0" width="74" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{PrecioUnitario}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement uuid="4441da02-73bd-4b3d-93ee-76d969b8cb14" x="0" y="0" width="16" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<text><![CDATA[$]]></text>
+								</staticText>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="b41bebcb-279e-42a5-b200-0b38b4898959">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="59e957c0-a8e3-4351-bf59-bb120075348a" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TOTAL]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter height="30" rowSpan="1">
+								<textField pattern="###0.00;-###0.00">
+									<reportElement uuid="34d6d2a7-4443-42ba-b74f-99cd4f9a35a7" x="16" y="0" width="74" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{ventas}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement uuid="b2dc3c59-ef78-4b18-ad68-16964e0866b0" x="0" y="0" width="16" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[$]]></text>
+								</staticText>
+							</jr:columnFooter>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="9526de3d-a4a3-4b66-9dd7-0ca7fdf5fcfa" x="16" y="0" width="74" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement uuid="4441da02-73bd-4b3d-93ee-76d969b8cb14" x="0" y="0" width="16" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<text><![CDATA[$]]></text>
+								</staticText>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<staticText>
+					<reportElement uuid="29a901e6-f7d4-4ce2-b651-7015f98873ed" x="0" y="1" width="553" height="38"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTALES DE FACTURAS Y PAGARÉS]]></text>
+				</staticText>
+				<frame>
+					<reportElement uuid="66545fff-83f9-44a6-b138-5f1fb9d637bb" x="0" y="51" width="88" height="179"/>
+				</frame>
+			</frame>
+			<frame>
+				<reportElement uuid="0589bd39-9633-4677-8889-6bb5814e3a25" x="1" y="561" width="555" height="158"/>
+				<staticText>
+					<reportElement uuid="29a901e6-f7d4-4ce2-b651-7015f98873ed" x="1" y="0" width="554" height="38"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[DETALLE POR VENDEDOR]]></text>
+				</staticText>
+				<crosstab>
+					<reportElement uuid="f3303d9e-3ac4-47c7-9849-4c24f4f3f3c9" x="0" y="38" width="555" height="105"/>
+					<crosstabDataset>
+						<dataset>
+							<datasetRun subDataset="Vendedores" uuid="a0e8e18c-2c93-4190-94cc-6e6b0d748b6c">
+								<datasetParameter name="desde">
+									<datasetParameterExpression><![CDATA[$P{desde}]]></datasetParameterExpression>
+								</datasetParameter>
+								<datasetParameter name="hasta">
+									<datasetParameterExpression><![CDATA[$P{hasta}]]></datasetParameterExpression>
+								</datasetParameter>
+								<datasetParameter name="horai">
+									<datasetParameterExpression><![CDATA[$F{cierre_diario_hora_inicio}]]></datasetParameterExpression>
+								</datasetParameter>
+								<datasetParameter name="horaf">
+									<datasetParameterExpression><![CDATA[$F{cierre_diario_hora_final}]]></datasetParameterExpression>
+								</datasetParameter>
+								<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+							</datasetRun>
+						</dataset>
+					</crosstabDataset>
+					<rowGroup name="nombre" width="113" totalPosition="End">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{nombre}]]></bucketExpression>
+						</bucket>
+						<crosstabRowHeader>
+							<cellContents backcolor="#F0F8FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement uuid="a5604dbf-b241-4cce-9539-ff080956089a" style="Crosstab Data Text" x="0" y="0" width="113" height="50"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$V{nombre}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabRowHeader>
+						<crosstabTotalRowHeader>
+							<cellContents backcolor="#005FB3" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<staticText>
+									<reportElement uuid="7056eecb-1ffd-4799-bd40-18e95847f6ee" x="0" y="0" width="397" height="25" forecolor="#FFFFFF"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12"/>
+									</textElement>
+									<text><![CDATA[Total Dia]]></text>
+								</staticText>
+							</cellContents>
+						</crosstabTotalRowHeader>
+					</rowGroup>
+					<rowGroup name="fechas" width="284" totalPosition="End">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{fechas}]]></bucketExpression>
+						</bucket>
+						<crosstabRowHeader>
+							<cellContents backcolor="#F0F8FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement uuid="d3f3b7a4-ff7c-4211-bbeb-65537fdb5703" style="Crosstab Data Text" x="0" y="0" width="284" height="25"/>
+									<textElement>
+										<font size="10" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{fechas}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabRowHeader>
+						<crosstabTotalRowHeader>
+							<cellContents backcolor="#BFE1FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<staticText>
+									<reportElement uuid="89e4219a-30fa-4d95-9424-bb1a153b487a" x="0" y="0" width="284" height="25"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[Total Despachador]]></text>
+								</staticText>
+							</cellContents>
+						</crosstabTotalRowHeader>
+					</rowGroup>
+					<columnGroup name="lado" height="30" totalPosition="End">
+						<bucket class="java.lang.Integer">
+							<bucketExpression><![CDATA[$F{lado}]]></bucketExpression>
+						</bucket>
+						<crosstabColumnHeader>
+							<cellContents backcolor="#F0F8FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement uuid="5fd1e6b8-27fb-4041-bb87-a1dd170ad656" style="Crosstab Data Text" x="0" y="0" width="103" height="0"/>
+									<textElement>
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement uuid="6aba1598-2ada-4afd-8ca0-31f8ce191fcd" x="0" y="0" width="53" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="9" isBold="true"/>
+									</textElement>
+									<text><![CDATA[VOLUMEN]]></text>
+								</staticText>
+								<staticText>
+									<reportElement uuid="a85994f3-42dd-4d7d-8e9a-3ecaf8cd61ac" x="53" y="0" width="60" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="11" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TOTAL]]></text>
+								</staticText>
+							</cellContents>
+						</crosstabColumnHeader>
+						<crosstabTotalColumnHeader>
+							<cellContents backcolor="#BFE1FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</cellContents>
+						</crosstabTotalColumnHeader>
+					</columnGroup>
+					<measure name="ventasMeasure" class="java.math.BigDecimal" calculation="Sum">
+						<measureExpression><![CDATA[$F{ventas}]]></measureExpression>
+					</measure>
+					<measure name="volumen" class="java.lang.Double" calculation="Sum">
+						<measureExpression><![CDATA[$F{volumen}]]></measureExpression>
+					</measure>
+					<crosstabCell width="113" height="25">
+						<cellContents>
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="21da32a0-8bb6-4883-86a8-b3463e5e3a5f" style="Crosstab Data Text" x="53" y="0" width="60" height="24"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ventasMeasure}]]></textFieldExpression>
+							</textField>
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="41e97fbf-2ab7-4d1c-9744-9aad0fdf0fe1" style="Crosstab Data Text" x="0" y="1" width="53" height="24"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{volumen}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="113" height="27" rowTotalGroup="nombre">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="9250ff51-a8c7-4345-af36-95385286a4a2" style="Crosstab Data Text" x="53" y="1" width="60" height="25" forecolor="#FFFFFF"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ventasMeasure}]]></textFieldExpression>
+							</textField>
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="8984a266-2580-4544-8d67-abf38fc0317f" style="Crosstab Data Text" x="1" y="0" width="52" height="25" forecolor="#FFFFFF"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{volumen}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="2" height="25" columnTotalGroup="lado">
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="2" height="27" rowTotalGroup="nombre" columnTotalGroup="lado">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="113" height="26" rowTotalGroup="fechas">
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="35ca7495-aef4-4db2-9e12-c4260d79c7c8" style="Crosstab Data Text" x="53" y="1" width="60" height="24"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ventasMeasure}]]></textFieldExpression>
+							</textField>
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="415e9417-ec43-4b90-ac91-f3acbec27398" style="Crosstab Data Text" x="1" y="1" width="52" height="24"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{volumen}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="2" height="26" rowTotalGroup="fechas" columnTotalGroup="lado">
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabCell>
+				</crosstab>
+			</frame>
+			<frame>
+				<reportElement uuid="f494525d-6188-4ffe-bfe8-412e47218345" x="1" y="0" width="553" height="161"/>
+				<componentElement>
+					<reportElement uuid="0c8435ee-bb06-4851-a5ff-9433d3d34344" key="table 2" style="table 2" positionType="Float" x="90" y="51" width="370" height="107"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="Producto" uuid="77d19a86-2e79-4832-8436-1d73405bf2f6">
+							<datasetParameter name="fechai">
+								<datasetParameterExpression><![CDATA[$P{desde}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{hasta}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="90" uuid="602ce62b-7dd5-4bc2-8c09-25a01eb7c788">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="0793e1f7-3a58-43e8-9c0d-10b372505893" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[PRODUCTO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="07912e2e-5e9e-4cca-b1c3-de6e65cfbc24" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TOTALES]]></text>
+								</staticText>
+							</jr:columnFooter>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement uuid="4a991325-a59d-4539-afc6-06e6808472ea" x="0" y="0" width="90" height="20"/>
+									<textElement>
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="7360b5ef-d161-40d9-943e-34257264fa18">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="03038d5c-7026-4881-8822-738b895ff29d" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[VOLUMEN]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter height="30" rowSpan="1">
+								<textField pattern="###0.0000;-###0.0000">
+									<reportElement uuid="e33ebebd-76ba-49a2-9cba-5d28813041f7" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{Volumen}]]></textFieldExpression>
+								</textField>
+							</jr:columnFooter>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<textField pattern="#,##0.00;-#,##0.00">
+									<reportElement uuid="0acd5df6-972d-4115-af12-f8f90fc5eefd" x="0" y="0" width="90" height="20"/>
+									<textElement>
+										<font size="12"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{cierre_diario_volumen}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="c77ab1fc-6e80-4333-ab35-9a2fc016a8b5">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="10dcc9f1-6fa8-4097-ab5a-1b0e08b294bf" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[P. UNITARIO]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<staticText>
+									<reportElement uuid="e20c939f-31a3-4ada-8468-d61f890cf65a" x="0" y="0" width="37" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="10" isBold="false"/>
+									</textElement>
+									<text><![CDATA[$]]></text>
+								</staticText>
+								<textField>
+									<reportElement uuid="7bb3525a-e743-4d5c-bb78-2241e6d33472" x="37" y="0" width="53" height="20"/>
+									<textElement>
+										<font size="13"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{producto_punit}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="8b6c3e8b-f318-495e-98ec-366b4aa2274d">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement uuid="8d59bc88-601f-4428-85ae-c7af557bcd2c" x="0" y="0" width="90" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="14" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TOTAL]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter height="30" rowSpan="1">
+								<textField pattern="###0.00;-###0.00">
+									<reportElement uuid="bb95e9cb-b3aa-4fae-880f-a52be5822bbd" x="16" y="0" width="74" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{ventas}]]></textFieldExpression>
+								</textField>
+								<staticText>
+									<reportElement uuid="3c12b1ff-af21-4394-b449-d89b083541bb" x="0" y="0" width="16" height="30"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="12" isBold="true"/>
+									</textElement>
+									<text><![CDATA[$]]></text>
+								</staticText>
+							</jr:columnFooter>
+							<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+								<staticText>
+									<reportElement uuid="ed73c8c2-0eae-4588-b33a-b003674a8d2c" x="0" y="0" width="32" height="20"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="10"/>
+									</textElement>
+									<text><![CDATA[$]]></text>
+								</staticText>
+								<textField pattern="#,##0.00;-#,##0.00">
+									<reportElement uuid="da082425-65e3-4c6f-80c9-c8db38d43db7" x="32" y="0" width="58" height="20"/>
+									<textElement>
+										<font size="13"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{cierre_diario_monto}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<staticText>
+					<reportElement uuid="15197a99-2726-46b6-a9c4-a0e558931326" x="0" y="1" width="553" height="38"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TOTAL VENTA DIARIA POR PRODUCTO]]></text>
+				</staticText>
+				<frame>
+					<reportElement uuid="0d2ee05d-b12b-4cae-9640-92295a04b3fc" x="0" y="51" width="88" height="107"/>
+				</frame>
+			</frame>
+			<break>
+				<reportElement uuid="78f56b86-d1b2-4ef1-b08e-a368ad0964c0" x="0" y="189" width="554" height="1"/>
+			</break>
+			<break>
+				<reportElement uuid="e5022f1b-b271-4632-99e9-f839ef7dc085" x="0" y="539" width="554" height="1"/>
+			</break>
+		</band>
+	</summary>
+</jasperReport>

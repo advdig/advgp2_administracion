@@ -1,0 +1,21 @@
+!! Vallejo Pintado Victor Claudio
+RUC:0102595295001
+---------------------------------
+!
+Ticket de Venta   
+001-001-000002464
+Cliente : Prueba
+Fecha : 01-09-2014
+Producto: Diesel
+Total venta: 57.77
+factura enviada al correo: 
+pruebasadvantech@gmail.com
+
+
+
+
+
+
+
+
+m

@@ -1,0 +1,42 @@
+INFO ADV.surtidores,line 9849,14.07.2014/12:38:02,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:38:02,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:41:47,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:41:47,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:43:37,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:43:37,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:45:14,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:45:14,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:46:59,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:46:59,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:53:14,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:53:14,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:54:39,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:54:39,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:56:34,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10053,14.07.2014/12:56:34,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:58:53,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10057,14.07.2014/12:58:53,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:58:53,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10057,14.07.2014/12:58:53,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'adv_facturacion.turnos_horas' doesn't exist
+INFO ADV.surtidores,line 9849,14.07.2014/12:59:45,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10037,14.07.2014/12:59:45,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'manguera' in 'where clause'
+INFO ADV.surtidores,line 9849,14.07.2014/14:29:10,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10044,14.07.2014/14:29:10,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'manguera' in 'where clause'
+INFO ADV.surtidores,line 9849,14.07.2014/14:30:40,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10044,14.07.2014/14:30:40,Error: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'configuracion.manguera' in 'where clause'
+INFO ADV.surtidores,line 9849,14.07.2014/14:32:31,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/14:53:35,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 10044,14.07.2014/14:53:35,Error: java.sql.SQLException: Invalid value for getInt() - 'Juan Gonzalez'
+INFO ADV.surtidores,line 9849,14.07.2014/14:54:35,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:06:10,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:06:13,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:13:04,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:14:44,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:15:59,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:17:37,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:26:32,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:32:19,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:35:08,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:35:12,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:37:21,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18
+INFO ADV.surtidores,line 9849,14.07.2014/15:37:29,Maguera: 1Producto: ExtraVolumen :2.154Precio Unit: 1.480Iva: 0.38subtotal :1.77total: 3.18

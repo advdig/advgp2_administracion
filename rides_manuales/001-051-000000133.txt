@@ -1,0 +1,46 @@
+!R!Estacion de Servicio Ba|os
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Factura #:    001-051-000000133
+Razon Social/Nombres y Apellidos:
+TORRES ARGUDO JUAN DIEGO
+Ruc/CI: 0105777932
+Fecha Emision: 2015-02-06
+-------------------
+Cod Principal: 1
+Cantidad:      1.000
+Descripcion:   Extra
+Precio Unitario:1.320
+Precio Total:  1.32
+-------------------
+Cod Principal: 2
+Cantidad:      1.000
+Descripcion:   Super
+Precio Unitario:1.950
+Precio Total:  1.95
+-------------------
+Subtotal 12%: 3.27
+IVA 12%:      0.39
+Valor Total:  3.66
+-------------------
+CLAVE DE ACCESO: 
+0602201501010259529500110010510000001331234567813
+AUTORIZACION S.R.I.: 
+0602201517042801025952950010215143725
+FECHA Y HORA AUTORIZACION:
+2015-02-06 17:05:01
+AMBIENTE:Pruebas EMISION: NORMAL
+-------------------
+ SISTEMA ADV-BOX -ADVANTECH
+  2829421 - 0999064457
+                                     
+                                     
+                                     
+
+
+
+
+
+i

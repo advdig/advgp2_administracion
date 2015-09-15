@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="8" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="69" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04bf8602-14d9-478b-9ed4-68e63afbe8c5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="9"/>
+	<queryString>
+		<![CDATA[SELECT
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`cedula_ruc` AS cliente_cedula_ruc,
+     IFNULL(codigos.`codigo`,0) AS codigos_codigo
+FROM
+     `cliente` cliente LEFT JOIN `codigos` codigos ON cliente.`idcliente` = codigos.`cliente_idcliente`
+ where cliente.credito_cliente=1
+and estado='AUTORIZADO' order by nombre]]>
+	</queryString>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_cedula_ruc" class="java.lang.String"/>
+	<field name="codigos_codigo" class="java.lang.String"/>
+	<group name="cliente">
+		<groupExpression><![CDATA[$F{cliente_cedula_ruc}]]></groupExpression>
+		<groupHeader>
+			<band height="42">
+				<textField>
+					<reportElement uuid="c77e23fa-e3ab-4b4e-b5ca-cd0bc1a10576" x="100" y="2" width="444" height="20"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="5cc17b8e-290b-429f-ba82-909da83c36c3" x="161" y="22" width="182" height="20"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_cedula_ruc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="81f82cf8-994f-4347-9e56-f38bb7c0221c" x="0" y="2" width="100" height="20"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre Cliente:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c0584871-b038-4892-b23c-1d3b38ab1567" x="100" y="22" width="61" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CED/RUC:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="0f60ce1e-6a59-43d2-9af7-8de71ee44045" x="0" y="22" width="81" height="20"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[PLACAS/CODIGOS]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2d7272bd-41fb-4f47-860d-b65684e5652f" x="260" y="16" width="230" height="33"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTES DE CREDITO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="fb8e80d3-87fa-4e5e-a081-a57e9dde3c10" x="0" y="0" width="69" height="28"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="e481fdbd-c339-40b0-8d01-3f72177172bb" x="0" y="0" width="69" height="23"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigos_codigo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

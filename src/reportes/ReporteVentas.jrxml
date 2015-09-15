@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e925073d-b9f5-4ec0-8735-622071288b70">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fi" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fef" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="mangueras" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hi" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT idfactura,fecha,hora,manguera,surtidor,nombre,total,cantidad FROM adv_facturacion.factura,producto where (producto_idproducto=idproducto)and (fecha>=$P!{fi} or fecha<=$P!{fef}) and(manguera in ($P!{mangueras}))
+and (hora>=$P!{hi} or hora<=$P!{hf});]]>
+	</queryString>
+	<field name="idfactura" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hora" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="manguera" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="surtidor" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cantidad" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="suma galones" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{cantidad}]]></variableExpression>
+	</variable>
+	<variable name="sumadinero" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<frame>
+				<reportElement uuid="e609ce53-2279-4117-b086-cf98ad44d23e" mode="Opaque" x="-23" y="-20" width="599" height="77" backcolor="#0069B3"/>
+				<staticText>
+					<reportElement uuid="f42b73d0-498f-4c5e-87d1-ab9aefeef9c0" x="42" y="6" width="246" height="34" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte de Ventas]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement uuid="41d2b0ae-9350-4550-815a-08d8f56b838a" x="455" y="0" width="100" height="20" forecolor="#FFFFFF"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="22b1bb0a-8dd6-4a4c-a9dd-7ed45c1837c7" x="0" y="22" width="59" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dfeaa7a9-00e8-43d8-959f-49dc0ef46e02" x="77" y="22" width="56" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f9a33911-a678-4920-be9a-c7b912fb4424" x="154" y="22" width="77" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Manguera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aca85eef-729e-4010-a637-c12cc0510296" x="243" y="22" width="70" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Surtidor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44410d81-f631-492a-b13d-61960c31f008" x="324" y="22" width="59" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="03bcd630-9fb1-4f9e-9f5e-0edda1e8e6c4" x="475" y="22" width="72" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Galones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ddf5fc8-c860-46d0-8852-a43b739080b4" x="392" y="22" width="63" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dinero]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="aac3b552-7624-48cf-bbc5-8db16530abe1" x="-2" y="0" width="557" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="8689f0a5-cbad-4186-9baf-faa956535bda" x="0" y="0" width="59" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="6d6eb793-9bca-41b2-ba03-b6da94c37157" x="77" y="0" width="56" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9bc5c3f0-99c8-453d-ada7-9aaadf16f76b" x="154" y="0" width="77" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{manguera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6be27706-fe0e-4bbc-9d87-e5b3d4bd1c24" x="243" y="0" width="70" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{surtidor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="507de8df-34b3-4dad-913a-d322804f4a27" x="324" y="0" width="59" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b49508dd-d023-4a31-b155-6cb120941209" x="392" y="0" width="63" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5e58e242-dd53-44a5-a725-d0ae669f233a" x="475" y="0" width="72" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ade83a0d-4647-4203-b760-ee85570e91da" x="140" y="0" width="84" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Dinero]]></text>
+			</staticText>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement uuid="3eebb002-cfe0-49b8-acf6-f8d6ca27f96b" x="224" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumadinero}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement uuid="914a1974-6a8e-405a-82e7-7a997fa7bb73" x="421" y="0" width="134" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{suma galones}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0dbbe23e-ee27-44a6-88f8-c0b8deae8f1b" x="337" y="0" width="84" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Galones]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

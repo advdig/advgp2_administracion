@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteDiario_pagares" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6de7ea64-28ac-4393-b7ee-c0238714e6a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="pagares" uuid="607238cc-adde-4d94-987a-fb91e93336e7">
+		<parameter name="condicion" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+      producto.`nombre` AS producto_nombre,   
+      sum(pagare.`total`) AS pagare_total,  
+      sum(pagare.`cantidad`) AS pagare_cantidad,
+      count(pagare.`idpagare`) AS pagare_idpagare
+     
+FROM
+     `configuracion` configuracion INNER JOIN `pagare` pagare ON configuracion.`nmanguera` = pagare.`configuracion_nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON pagare.`usuarios_idusuarios` = usuarios.`idusuarios`	
+where $P!{condicion}
+
+group by producto.nombre]]>
+		</queryString>
+		<field name="producto_nombre" class="java.lang.String"/>
+		<field name="pagare_total" class="java.math.BigDecimal"/>
+		<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+		<field name="pagare_idpagare" class="java.lang.Long">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="condicion" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+      producto.`nombre` AS producto_nombre,   
+      sum(pagare.`total`) AS pagare_total,  
+      sum(pagare.`cantidad`) AS pagare_cantidad,
+      count(pagare.`idpagare`) AS pagare_idpagare
+     
+FROM
+     `configuracion` configuracion INNER JOIN `pagare` pagare ON configuracion.`nmanguera` = pagare.`configuracion_nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON pagare.`usuarios_idusuarios` = usuarios.`idusuarios`	
+where $P!{condicion}
+
+group by producto.nombre]]>
+	</queryString>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="pagare_total" class="java.math.BigDecimal"/>
+	<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+	<field name="pagare_idpagare" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="122" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="9d628c84-0dd1-4549-b20b-e632a0c14687" key="table" style="table" x="0" y="0" width="555" height="122"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="pagares" uuid="3486f691-9439-4fdc-a69c-6c93dc3b2ca5">
+						<datasetParameter name="condicion">
+							<datasetParameterExpression><![CDATA[$P{condicion}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="756a7552-9a24-49ce-ba3a-f508b2d84938">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="50ca2fed-ddab-47af-b546-4bf55fb25788" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[producto_nombre]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="28e71407-ee71-4a74-b5c2-88b4e6d52f14" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="6b086455-4321-48dd-85b6-d8028669defe">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="747ca2a7-776e-4538-824d-c502d36d04eb" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[pagare_idpagare]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="22a3afa1-809c-440b-93fc-2484333657fe" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{pagare_idpagare}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a142a8a5-4c99-4f62-84ca-1bbbbff51763">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="32fa754f-eff9-4ac9-9408-09f7a59294cf" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[pagare_cantidad]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="079465a3-b0f8-424b-bd31-4aea69f68a58" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{pagare_cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="bba07497-7a4f-492f-a00b-94b584227220">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="c4264cc8-b8f9-4f08-a475-ab463775772e" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[pagare_total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="691176fd-f086-46b8-a6f3-85a8a9752d93" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{pagare_total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</pageHeader>
+</jasperReport>

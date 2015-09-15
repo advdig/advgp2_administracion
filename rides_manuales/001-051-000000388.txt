@@ -1,0 +1,46 @@
+!R!Estacion de Servicio Banos
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Factura #:    001-051-000000388
+Razon Social/Nombres y Apellidos:
+TORRES ARGUDO JUAN DIEGO
+Ruc/CI: 0105777932
+Fecha Emision: 2018-02-01
+-------------------
+Cod Principal: 1
+Cantidad:      6.000000
+Descripcion:   Extra
+Precio Unitario:1.321
+Precio Total:  7.928571
+-------------------
+Subtotal 12%: 7.93
+IVA 12%:      0.95
+Valor Total:  8.88
+-------------------
+CLAVE DE ACCESO: 
+1009201401010259529500110000000000000000000004323
+AUTORIZACION S.R.I.: 
+null
+FECHA Y HORA AUTORIZACION:
+2018-02-01 07:27:19
+AMBIENTE:Pruebas EMISION: CONTINGENCIA
+-------------------
+ SISTEMA ADV-BOX -ADVANTECH
+  2829421 - 0999064457
+ESTA FACTURA FUE EMITIDA EN CONTINGENCIA
+USTED PODRA CONSULTAR SU FACTURA
+AUTORIZADA EN 24 HORAS EN LA 
+PAGINA WEB DEL SRI
+/COMPROBANTES ELECTRONICOS
+http://www.sri.gob.ec
+                                     
+                                     
+                                     
+
+
+
+
+
+i

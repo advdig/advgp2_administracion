@@ -1,0 +1,48 @@
+!!8      RIDE        
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Contribuyente Especial #: 0
+Obligado a llevar Contabilidad:NO
+Factura #:    001-001-000011304
+# de Autorizacion: 
+2710201412260001025952950010115978523
+Fecha y Hora Autorizacion:
+2014-10-27 12:26:00
+Ambiente:     Pruebas
+Emision:      NORMAL
+Clave de Acceso:
+2710201401010259529500110010010000113041234567811
+Razon Social/Nombres y Apellidos:
+MARQUEZ MORENO RICARDO VICENTE
+Ruc/CI: 0100000033001
+Fecha Emision: 2014-10-27
+---------------------------------
+Cod Principal: 1
+Cantidad:      6.760
+Descripcion:   Extra
+Precio Unitario:0.660
+Precio Total:  4.46
+---------------------------------
+Subtotal 12%: 4.46
+Subtotal 0%:  0
+Subtotal No objeto de Iva:0
+Subtotal sin impuestos:4.46
+Descuento:    0
+ICE           0
+IVA 12%:      0.536
+Propina:      0
+Valor Total:  5.00
+---------------------------------
+    Imprime  Advangas       
+    2829421 - 0999064457      
+    Huayna-Capac  3-35     
+
+
+
+
+
+
+
+
+i

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="venta_combustible_subreport1" language="groovy" pageWidth="595" pageHeight="421" orientation="Landscape" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9f68fc59-bc06-4f86-8481-58eee45679e2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="horai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     pagare.`pagare` AS pagare_pagare,
+     pagare.`total` AS pagare_total,
+     pagare.`cantidad` AS pagare_cantidad,
+     pagare.`fecha` AS pagare_fecha,
+     pagare.`idpagare` AS pagare_idpagare,
+     pagare.`hora` AS pagare_hora
+FROM
+     `cliente` cliente INNER JOIN `pagare` pagare ON cliente.`idcliente` = pagare.`cliente_idcliente`
+     INNER JOIN `usuarios` usuarios ON pagare.`usuarios_idusuarios` = usuarios.`idusuarios`]]>
+	</queryString>
+	<field name="pagare_pagare" class="java.lang.Object"/>
+	<field name="pagare_total" class="java.math.BigDecimal"/>
+	<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+	<field name="pagare_fecha" class="java.sql.Date"/>
+	<field name="pagare_idpagare" class="java.lang.Integer"/>
+	<field name="pagare_hora" class="java.sql.Time"/>
+	<variable name="pagare_cantidad_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagare_cantidad}]]></variableExpression>
+	</variable>
+	<variable name="pagare_total_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagare_total}]]></variableExpression>
+	</variable>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e4392bf3-b074-41a0-8c01-9f2e4c0abb3c" x="0" y="15" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Numero Pagare]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d558e23a-3a57-47d7-88e6-d47c829d65a1" x="100" y="15" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="373591f3-e29b-4a0b-9c37-e60049a7be3b" x="200" y="15" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b3fae0e7-bf8c-4dff-b9fb-94dc3086ae75" x="300" y="15" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Galones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b099e4d-96cb-46bf-b5c4-af3334e38a74" x="400" y="16" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="a5f91771-5605-4e48-8c5a-9beefce89b49" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_idpagare}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="a38bbd3e-d564-4594-95ef-8115e65db9d7" x="100" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pagare_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm.ss">
+				<reportElement uuid="5ba6cbb8-4a0d-4b44-844d-23d1442dbcd6" x="200" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pagare_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="504b6871-a340-44da-85d4-d69c14b7b35d" x="300" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pagare_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dfca54bd-c03e-4277-8048-b3e0cc062fdc" x="400" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{pagare_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<textField>
+				<reportElement uuid="c66fa3f3-fc88-4521-a20b-028ab20ed092" x="300" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{pagare_cantidad_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75474cc2-7c0e-4d4c-ac34-17553cf64eaf" x="400" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{pagare_total_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnCount="8" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="100" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="04bf8602-14d9-478b-9ed4-68e63afbe8c5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`cedula_ruc` AS cliente_cedula_ruc
+FROM
+     `cliente` cliente LEFT JOIN `codigos` codigos ON cliente.`idcliente` = codigos.`cliente_idcliente`
+ where cliente.credito_cliente=1
+and estado='AUTORIZADO' order by nombre]]>
+	</queryString>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_cedula_ruc" class="java.lang.String"/>
+	<group name="cliente">
+		<groupExpression><![CDATA[$F{cliente_cedula_ruc}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<rectangle radius="10">
+					<reportElement uuid="d043fb17-5e96-4664-bdd2-c3ac4481f82d" x="0" y="4" width="802" height="20"/>
+				</rectangle>
+				<textField>
+					<reportElement uuid="c77e23fa-e3ab-4b4e-b5ca-cd0bc1a10576" x="100" y="2" width="444" height="20"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="5cc17b8e-290b-429f-ba82-909da83c36c3" x="620" y="2" width="182" height="20"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_cedula_ruc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="81f82cf8-994f-4347-9e56-f38bb7c0221c" x="10" y="5" width="88" height="20"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre Cliente:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="c0584871-b038-4892-b23c-1d3b38ab1567" x="559" y="5" width="61" height="20"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CED/RUC:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2d7272bd-41fb-4f47-860d-b65684e5652f" x="291" y="13" width="329" height="33"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTES DE CREDITO]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

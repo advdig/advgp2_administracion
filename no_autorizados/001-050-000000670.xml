@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?><autorizacion>
+    <estado>NO AUTORIZADO</estado>
+    <fechaAutorizacion>2014-08-08T09:20:01.040-05:00</fechaAutorizacion>
+    <comprobante>&lt;![CDATA[&lt;![CDATA[null]]&gt;]]&gt;</comprobante>
+    <mensajes>
+        <mensaje>
+            <identificador>35</identificador>
+            <mensaje>ARCHIVO NO CUMPLE ESTRUCTURA XML</mensaje>
+            <informacionAdicional>Se encontró el siguiente error en la estructura del comprobante: cvc-pattern-valid: Value 'null' is not facet-valid with respect to pattern '[0-9]{49}' for type 'claveAcceso'.</informacionAdicional>
+            <tipo>ERROR</tipo>
+        </mensaje>
+        <mensaje>
+            <identificador>60</identificador>
+            <mensaje>ESTE PROCESO FUE REALIZADO EN EL AMBIENTE DE PRUEBAS</mensaje>
+            <tipo>INFORMATIVO</tipo>
+        </mensaje>
+    </mensajes>
+</autorizacion>

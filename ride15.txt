@@ -1,0 +1,48 @@
+!!8      RIDE        
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Contribuyente Especial #: 0
+Obligado a llevar Contabilidad:NO
+Factura #:    001-001-000011161
+# de Autorizacion: 
+2310201417055901025952950010114294531
+Fecha y Hora Autorizacion:
+2014-10-23 17:05:57
+Ambiente:     Pruebas
+Emision:      NORMAL
+Clave de Acceso:
+2310201401010259529500110010010000111611234567817
+Razon Social/Nombres y Apellidos:
+GONZALEZ JARA JUAN ANDRES
+Ruc/CI: 0106520331
+Fecha Emision: 2014-10-23
+---------------------------------
+Cod Principal: 1
+Cantidad:      9.460
+Descripcion:   Extra
+Precio Unitario:1.302
+Precio Total:  12.32
+---------------------------------
+Subtotal 12%: 12.32
+Subtotal 0%:  0
+Subtotal No objeto de Iva:0
+Subtotal sin impuestos:12.32
+Descuento:    0
+ICE           0
+IVA 12%:      1.680
+Propina:      0
+Valor Total:  14.00
+---------------------------------
+    Imprime  Advangas       
+    2829421 - 0999064457      
+    Huayna-Capac  3-35     
+
+
+
+
+
+
+
+
+i

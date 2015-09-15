@@ -1,0 +1,48 @@
+!!8      RIDE        
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Contribuyente Especial #: 0
+Obligado a llevar Contabilidad:NO
+Factura #:    001-001-000011338
+# de Autorizacion: 
+2810201408503101025952950010117180613
+Fecha y Hora Autorizacion:
+2014-10-28 08:50:29
+Ambiente:     Pruebas
+Emision:      NORMAL
+Clave de Acceso:
+2810201401010259529500110010010000113381234567811
+Razon Social/Nombres y Apellidos:
+GONZALEZ JARA JUAN ANDRES
+Ruc/CI: 0106520331
+Fecha Emision: 2014-10-28
+---------------------------------
+Cod Principal: 3
+Cantidad:      9.640
+Descripcion:   Diesel
+Precio Unitario:0.926
+Precio Total:  8.93
+---------------------------------
+Subtotal 12%: 8.93
+Subtotal 0%:  0
+Subtotal No objeto de Iva:0
+Subtotal sin impuestos:8.93
+Descuento:    0
+ICE           0
+IVA 12%:      1.071
+Propina:      0
+Valor Total:  10.00
+---------------------------------
+    Imprime  Advangas       
+    2829421 - 0999064457      
+    Huayna-Capac  3-35     
+
+
+
+
+
+
+
+
+i

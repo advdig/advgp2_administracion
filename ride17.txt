@@ -1,0 +1,31 @@
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Contribuyente Especial #: 0
+Obligado a llevar Contabilidad:NO
+Factura #:    001-001-000010937
+# de Autorizacion: 
+1710201411400501025952950010110189707
+Fecha y Hora Autorizacion:
+2014-10-17 11:40:07
+Ambiente:     Pruebas
+Emision:      NORMAL
+Clave de Acceso:
+1710201401010259529500110010010000109371234567811
+Razon Social/Nombres y Apellidos:
+MUÑOZ ESTRADA MELANEA ERNESTINA
+Ruc/CI: 1711936839001
+Fecha Emision: 2014-10-17
+---------------------------------
+    Imprime  Advangas       
+    2829421 - 0999064457      
+    Huayna-Capac  3-35     
+
+
+
+
+
+
+
+
+m

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="83738656-1be6-4af5-9e97-3097014febcc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="5666f46c-9de0-48c9-b8d1-835658f8e29a"/>
+	<parameter name="ruc" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="condicion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     producto.`nombre` AS producto_nombre,
+     usuarios.`nombre` AS usuarios_nombre,
+     pagare.`idpagare` AS pagare_idpagare,
+if(facturado=0,'NO FACTURADO','FACTURADO') AS pagare_facturado,
+     pagare.`total` AS pagare_total,
+     pagare.`cantidad` AS pagare_cantidad,
+     pagare.`fecha` AS pagare_fecha,
+     pagare.`hora` AS pagare_hora,
+     pagare.`placa` AS pagare_placa,
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`cedula_ruc` AS cliente_cedula_ruc
+FROM
+     `configuracion` configuracion INNER JOIN `pagare` pagare ON configuracion.`nmanguera` = pagare.`configuracion_nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON pagare.`usuarios_idusuarios` = usuarios.`idusuarios`
+     INNER JOIN `cliente` cliente ON pagare.`cliente_idcliente` = cliente.`idcliente`
+where $P!{condicion} group by pagare_idpagare]]>
+	</queryString>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="usuarios_nombre" class="java.lang.String"/>
+	<field name="pagare_idpagare" class="java.lang.Integer"/>
+	<field name="pagare_facturado" class="java.lang.String"/>
+	<field name="pagare_total" class="java.math.BigDecimal"/>
+	<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+	<field name="pagare_fecha" class="java.sql.Date"/>
+	<field name="pagare_hora" class="java.sql.Time"/>
+	<field name="pagare_placa" class="java.lang.String"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_cedula_ruc" class="java.lang.String"/>
+	<variable name="TOTAL_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="pagare_total_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagare_total}]]></variableExpression>
+	</variable>
+	<variable name="pagare_total_2" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagare_total}]]></variableExpression>
+	</variable>
+	<variable name="pagare_cantidad_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pagare_cantidad}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0891495c-81dc-44d5-a207-e5fbc6278600" x="59" y="19" width="399" height="36"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE CLIENTES DE CRÉDITO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="1b3c0712-b641-4fb7-925d-908002b47272" x="0" y="-56" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0b82796f-992e-476f-a2e1-0a1de5b25ca2" x="0" y="5" width="134" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE_CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7cebf78b-6d4a-4423-bb1e-2e387bcb4557" x="331" y="6" width="115" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CEDULA_CLIENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d0b2bc26-0889-4927-97d0-7df75a681500" x="134" y="5" width="184" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="76398705-5bfe-440d-9573-c18da2d31864" x="446" y="6" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cliente_cedula_ruc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="409e0374-312a-4c4b-b294-64de2d61c826" x="258" y="0" width="97" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL PAGARE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c12da249-3f5a-45ee-ae59-7472a4bcd9c3" x="446" y="0" width="51" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="31eff21b-f2c9-4ad5-962f-c091d198d44b" x="150" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CANTIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="46b8f710-0f91-4d4b-9f26-5aedbe64dcc9" x="69" y="0" width="80" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8c80c59c-f6af-4f50-ae17-3dc4f10a0642" x="0" y="0" width="59" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NUMERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="117fb436-6166-4ff3-9a4f-c76c50a1cf60" x="362" y="0" width="53" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="52e229a7-574f-44d8-9a72-198992640277" x="70" y="4" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="364aecf6-587f-417f-b96f-ec467ad9ecc3" x="3" y="4" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_idpagare}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9b42c00e-a2bb-4639-b4ff-7b312c697f08" x="150" y="4" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d4771dc-5d78-47ec-b0ae-ac20bacae0da" x="446" y="4" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_facturado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b407117a-bd3b-41e2-ab4d-90e16db4a4a2" x="256" y="4" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="bf48f2c5-b42b-473b-ab42-c843df44c205" x="362" y="4" width="71" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagare_fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7d69743d-143a-4f50-b5e7-e286b1576a0a" x="80" y="18" width="54" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6cde70a8-ff6d-4e85-abd8-f462e855410d" x="262" y="18" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{pagare_total_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a48b217-7f07-4c5f-aea2-d1e07adeab7f" x="150" y="18" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{pagare_cantidad_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="bee0c727-57d8-42dd-a45d-5d60bebebc0c" x="0" y="34" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

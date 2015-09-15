@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="14f808e4-39fe-4b65-94a6-23eb78973294">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="155"/>
+	<property name="ireport.y" value="162"/>
+	<parameter name="condicion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechai" class="java.lang.String"/>
+	<parameter name="fechaf" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     (select nombre_comercial from datos_gasolinera limit 1) as nombrec,
+     cliente.`cedula_ruc` AS cliente_cedula_ruc,
+     cliente.`nombre` AS cliente_nombre,
+	  IFNULL((select sum(total) from pagare,cliente where $P!{condicion}  and cliente_idcliente=idcliente and facturado=1 and cedula_ruc=cliente_cedula_ruc ), 0) as facturados,
+	   IFNULL((select sum(total) from pagare,cliente where $P!{condicion} and cliente_idcliente=idcliente and  facturado=0 and cedula_ruc=cliente_cedula_ruc ), 0)  as no_facturados ,
+IFNULL((SELECT sum(total)/pagare.punit FROM adv_facturacion.pagare,adv_facturacion.configuracion,adv_facturacion.producto,adv_facturacion.cliente where $P!{condicion} and  pagare.cliente_idcliente=idcliente and configuracion_nmanguera=nmanguera and producto_idproducto=idproducto and idproducto=1 and cedula_ruc=cliente_cedula_ruc  and pagare.facturado=1 and cedula_ruc=cliente_cedula_ruc group by idproducto ),0) as galones_extra,
+IFNULL((SELECT sum(total) FROM adv_facturacion.pagare,adv_facturacion.configuracion,adv_facturacion.producto,adv_facturacion.cliente where  $P!{condicion} and pagare.cliente_idcliente=idcliente and configuracion_nmanguera=nmanguera and producto_idproducto=idproducto and idproducto=1 and pagare.facturado=1 and cedula_ruc=cliente_cedula_ruc group by idproducto),0) as total_extra
+,
+IFNULL((SELECT sum(total)/pagare.punit FROM adv_facturacion.pagare,adv_facturacion.configuracion,adv_facturacion.producto,adv_facturacion.cliente where $P!{condicion} and  pagare.cliente_idcliente=idcliente and configuracion_nmanguera=nmanguera and producto_idproducto=idproducto and idproducto=2 and pagare.facturado=1 and cedula_ruc=cliente_cedula_ruc  group by idproducto ),0) as galones_super,
+IFNULL((SELECT sum(total) FROM adv_facturacion.pagare,adv_facturacion.configuracion,adv_facturacion.producto,adv_facturacion.cliente where  $P!{condicion} and pagare.cliente_idcliente=idcliente and configuracion_nmanguera=nmanguera and producto_idproducto=idproducto and idproducto=2 and pagare.facturado=1 and cedula_ruc=cliente_cedula_ruc  group by idproducto),0) as total_super,
+IFNULL((SELECT sum(total)/pagare.punit FROM adv_facturacion.pagare,adv_facturacion.configuracion,adv_facturacion.producto,adv_facturacion.cliente where $P!{condicion} and  pagare.cliente_idcliente=idcliente and configuracion_nmanguera=nmanguera and producto_idproducto=idproducto and idproducto=3 and pagare.facturado=1 and cedula_ruc=cliente_cedula_ruc  group by idproducto ),0) as galones_diesel,
+IFNULL((SELECT sum(total) FROM adv_facturacion.pagare,adv_facturacion.configuracion,adv_facturacion.producto,adv_facturacion.cliente where  $P!{condicion} and pagare.cliente_idcliente=idcliente and configuracion_nmanguera=nmanguera and producto_idproducto=idproducto and idproducto=3 and pagare.facturado=1 and cedula_ruc=cliente_cedula_ruc  group by idproducto),0)as total_diesel FROM
+     `cliente` cliente INNER JOIN `credito_cliente` credito_cliente ON cliente.`idcliente` = credito_cliente.`cliente_idcliente`
+ INNER JOIN `pagare` pagare ON cliente.`idcliente` = pagare.`cliente_idcliente`
+where $P!{condicion} and pagare.facturado=1
+
+group by cedula_ruc
+order by  cliente.`nombre`]]>
+	</queryString>
+	<field name="nombrec" class="java.lang.String"/>
+	<field name="cliente_cedula_ruc" class="java.lang.String"/>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="facturados" class="java.math.BigDecimal"/>
+	<field name="no_facturados" class="java.math.BigDecimal"/>
+	<field name="galones_extra" class="java.math.BigDecimal"/>
+	<field name="total_extra" class="java.math.BigDecimal"/>
+	<field name="galones_super" class="java.math.BigDecimal"/>
+	<field name="total_super" class="java.math.BigDecimal"/>
+	<field name="galones_diesel" class="java.math.BigDecimal"/>
+	<field name="total_diesel" class="java.math.BigDecimal"/>
+	<variable name="facturados_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{facturados}]]></variableExpression>
+	</variable>
+	<variable name="no_facturados_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{no_facturados}]]></variableExpression>
+	</variable>
+	<variable name="galones_extra_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{galones_extra}]]></variableExpression>
+	</variable>
+	<variable name="total_extra_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_extra}]]></variableExpression>
+	</variable>
+	<variable name="facturados_2" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{facturados}]]></variableExpression>
+	</variable>
+	<variable name="galones_super_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{galones_super}]]></variableExpression>
+	</variable>
+	<variable name="total_super_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_super}]]></variableExpression>
+	</variable>
+	<variable name="galones_diesel_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{galones_diesel}]]></variableExpression>
+	</variable>
+	<variable name="total_diesel_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{total_diesel}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="45193dbb-9eb3-45b7-a48c-e9a17cce5c17" x="189" y="11" width="462" height="48"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE CLIENTES DE CREDITO ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="0614d0c6-c117-47f7-ab6a-5fdfd7a83bef" x="189" y="59" width="462" height="41"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombrec}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="fab4aa0d-1824-4bfe-8246-cb04bfb98d7c" x="0" y="15" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6a6054e9-0797-445a-b989-8d7621f96de8" x="471" y="15" width="106" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rango de Fechas:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="6496dae5-5142-4f52-9d62-898655d0ed6e" x="577" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8c918496-6e8a-4afc-903a-6ee3384d845b" x="677" y="15" width="14" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Bottom">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="34c5cb1b-0606-4ec1-b68f-855bb801c82f" x="691" y="15" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="31cf2ab7-8121-483c-aac5-bf45658c83f6" x="0" y="0" width="91" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DI CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="52c0cd9f-8025-453b-9d36-e22a3174f2c3" x="91" y="0" width="167" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b1b5c06-e632-47ab-ae4f-a1af15e70a6d" x="733" y="1" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7ce410d-f3f9-41ac-b6a6-c246d1b5417e" x="284" y="20" width="78" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Galones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2c02a5e9-33c9-40bc-8fa3-b1eea095478d" x="449" y="1" width="128" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Super]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02137ffa-fd7a-44ab-819e-d533b04d67ac" x="589" y="1" width="124" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diesel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="58a0d0d3-7cff-4938-b7ba-e4f8eccadc29" x="448" y="21" width="65" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Galones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="990e8b17-47c0-48cf-9f58-e488ef73e760" x="513" y="21" width="64" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02d2f7d0-1c8e-401d-933d-352c6a6cec7b" x="589" y="21" width="62" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Galones]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1c3dc13-3823-4ddb-b417-580df12cd37d" x="651" y="21" width="62" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8473965f-f96c-4727-ad20-13de7595b2e3" x="284" y="1" width="152" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a7e71e65-feaf-414c-a41c-3a06afefa1cd" x="362" y="20" width="74" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="609f844d-08e8-4951-9921-5b5b11349a40" x="0" y="0" width="802" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="bf31fee2-6fdd-4d7c-af33-875cc67b5a51" x="10" y="0" width="81" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_cedula_ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b018719c-d696-474c-a03f-a33ad4d0d0dd" x="91" y="0" width="167" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e4b6c801-13d9-4923-a446-74a961cc6725" x="284" y="0" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{galones_extra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ccf5d209-70a2-4653-8f41-ee2f581190fb" x="362" y="0" width="74" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total_extra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1f381ac6-8308-4b12-ba08-3ea29d8fa50d" x="448" y="0" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{galones_super}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a3a7a6d8-e504-4bad-8828-23e898ba60ed" x="513" y="0" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total_super}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c73fdc2b-32bc-4733-b17b-83c679912438" x="589" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{galones_diesel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="abe597fa-96f9-40e0-850d-83e04d8702c0" x="651" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{total_diesel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f92f913f-fdc7-4fcf-b3db-e1e963df4564" x="733" y="3" width="69" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{facturados}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="22" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement uuid="85e16bce-3d48-4265-802e-d7b8ee7c23f7" x="459" y="0" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{galones_super_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9cf22daf-d211-4ac3-888a-3d5493f4e78a" x="378" y="1" width="74" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{total_extra_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ecf06922-e0fc-4648-a6cb-193fb10c587e" x="666" y="0" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{total_diesel_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8a2291d5-a9d2-4e3d-8a9c-8091ea287031" x="111" y="0" width="133" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTALES]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="242cb678-26ed-487c-ad99-05c2fd817005" x="530" y="0" width="64" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{total_super_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ee990ca2-2472-41d0-99ca-dac39486ad7d" x="744" y="0" width="58" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{facturados_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="186606a9-e356-4541-81d8-3230f123d575" x="295" y="1" width="78" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{galones_extra_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e107c4a3-d413-469e-8c13-6b2f40c80607" x="602" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{galones_diesel_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

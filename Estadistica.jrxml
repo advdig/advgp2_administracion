@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13e8baac-fd1f-454b-b58d-82ae452230cc">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fechai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT DATE_FORMAT(hora,'%H'":00"),sum(total) FROM adv_facturacion.factura,adv_facturacion.factura_detalle where factura_idfactura=idfactura and (fecha=$P{fechai}) group by DATE_FORMAT(hora,'%H')]]>
+	</queryString>
+	<field name="DATE_FORMAT(hora,&apos;%H&apos;&quot;:00&quot;)" class="java.lang.String"/>
+	<field name="sum(total)" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="511098f2-d258-4d99-9521-d477184630bc" x="142" y="0" width="287" height="25"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTES DE VENTAS]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnFooter>
+		<band height="723" splitType="Stretch">
+			<lineChart>
+				<chart>
+					<reportElement uuid="4d5b301a-ec08-4561-91e1-252613e25f84" x="30" y="16" width="508" height="312"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$P{fechai}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{DATE_FORMAT(hora,'%H'":00")}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{sum(total)}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

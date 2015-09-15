@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<notaCredito id="comprobante" version="1.0.0">
+    <infoTributaria>
+        <ambiente>1</ambiente>
+        <tipoEmision>1</tipoEmision>
+        <razonSocial>Claudio Vallejo</razonSocial>
+        <nombreComercial>Estacion de Servicio Banos</nombreComercial>
+        <ruc>0102595295001</ruc>
+        <claveAcceso>1009201401010259529500110000000000000000000004323</claveAcceso>
+        <codDoc>04</codDoc>
+        <estab>001</estab>
+        <ptoEmi>050</ptoEmi>
+        <secuencial>000000604</secuencial>
+        <dirMatriz>Huayna Capac</dirMatriz>
+    </infoTributaria>
+    <infoNotaCredito>
+        <fechaEmision>23/02/2015</fechaEmision>
+        <dirEstablecimiento>Huayna Capac</dirEstablecimiento>
+        <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
+        <razonSocialComprador>HIDALGO E HIDALGO S.A</razonSocialComprador>
+        <identificacionComprador>1790059111001</identificacionComprador>
+        <obligadoContabilidad>NO</obligadoContabilidad>
+        <codDocModificado>01</codDocModificado>
+        <numDocModificado>001-051-000000351</numDocModificado>
+        <fechaEmisionDocSustento>23/02/2015</fechaEmisionDocSustento>
+        <totalSinImpuestos>10.03</totalSinImpuestos>
+        <valorModificacion>11.23</valorModificacion>
+        <moneda>Dolar</moneda>
+        <totalConImpuestos>
+            <totalImpuesto>
+                <codigo>2</codigo>
+                <codigoPorcentaje>2</codigoPorcentaje>
+                <baseImponible>10.03</baseImponible>
+                <valor>1.2</valor>
+            </totalImpuesto>
+        </totalConImpuestos>
+        <motivo>ANULACION</motivo>
+    </infoNotaCredito>
+    <detalles>
+        <detalle>
+            <codigoInterno>1</codigoInterno>
+            <codigoAdicional>1</codigoAdicional>
+            <descripcion>EXTRA</descripcion>
+            <cantidad>7.588</cantidad>
+            <precioUnitario>1.32</precioUnitario>
+            <descuento>0.0</descuento>
+            <precioTotalSinImpuesto>10.03</precioTotalSinImpuesto>
+            <impuestos>
+                <impuesto>
+                    <codigo>2</codigo>
+                    <codigoPorcentaje>2</codigoPorcentaje>
+                    <tarifa>12</tarifa>
+                    <baseImponible>10.03</baseImponible>
+                    <valor>1.2</valor>
+                </impuesto>
+            </impuestos>
+        </detalle>
+    </detalles>
+    <infoAdicional>
+        <campoAdicional nombre="Imprime">Advadvantech</campoAdicional>
+    </infoAdicional>
+</notaCredito>

@@ -1,0 +1,48 @@
+!R!Estacion de Servicio Ba|os
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Contribuyente Especial #: 0
+Obligado a llevar Contabilidad:NO
+Factura #:    001-001-000011351
+# de Autorizacion: 
+
+Fecha y Hora Autorizacion:
+2014-10-28 10:34:01
+Ambiente:     Pruebas
+Emision:      NORMAL
+Clave de Acceso:
+2810201401010259529500110010010000113511234567812
+Razon Social/Nombres y Apellidos:
+Consumidor Final
+Ruc/CI: 1111111111111
+Fecha Emision: 2014-10-28
+---------------------------------
+Cod Principal: 1
+Cantidad:      6.760
+Descripcion:   Extra
+Precio Unitario:1.321
+Precio Total:  8.93
+---------------------------------
+Subtotal 12%: 8.93
+Subtotal 0%:  0
+Subtotal No objeto de Iva:0
+Subtotal sin impuestos:8.93
+Descuento:    0
+ICE           0
+IVA 12%:      1.071
+Propina:      0
+Valor Total:  10.00
+---------------------------------
+    AdvBox-Advangas       
+    2829421 - 0999064457      
+    Huayna-Capac  3-35     
+
+
+
+
+
+
+
+
+i

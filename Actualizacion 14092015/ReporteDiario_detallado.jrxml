@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteDiario" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="804" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="d4d36e0e-88a7-446c-b02f-fd53f247d37c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="762"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#73E6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFE6E6">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 11_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 12_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 13_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 14_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 15_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table 16">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 16_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 17_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 18_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 19_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 20_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="totalpagares" uuid="035f494a-2bf8-4a03-a334-768f133b794e">
+		<parameter name="condicion" class="java.lang.String"/>
+		<parameter name="totalp" class="java.lang.Double">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+      producto.`nombre` AS producto_nombre,   
+      sum(pagare.`total`) AS pagare_total,  
+      sum(pagare.`cantidad`) AS pagare_cantidad,
+      count(pagare.`idpagare`) AS pagare_idpagare
+     
+FROM
+     `configuracion` configuracion INNER JOIN `pagare` pagare ON configuracion.`nmanguera` = pagare.`configuracion_nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON pagare.`usuarios_idusuarios` = usuarios.`idusuarios`		
+where $P!{condicion}
+group by producto.nombre]]>
+		</queryString>
+		<field name="producto_nombre" class="java.lang.String"/>
+		<field name="pagare_total" class="java.math.BigDecimal"/>
+		<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+		<field name="pagare_idpagare" class="java.lang.Long">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="totalfacturasContado" uuid="51c3c06f-6aa5-44ec-9a41-2d382b45d167">
+		<parameter name="condicion" class="java.lang.String"/>
+		<parameter name="totalc" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     count(factura.`idfactura`) AS factura_idfactura,
+     sum(factura_detalle.`cantidad`) AS factura_detalle_cantidad,
+     sum(factura.`total`) AS factura_total,
+     metodo_pago AS metodo,
+     producto.`nombre` AS producto_nombre,
+     tipo_producto.`tipo_producto` AS tipo_producto_tipo_producto
+FROM
+     `factura` factura INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+     INNER JOIN `producto` producto ON factura_detalle.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `tipo_producto` tipo_producto ON producto.`tipo_producto_idtipo_producto` = tipo_producto.`idtipo_producto`
+     INNER JOIN `usuarios` usuarios ON factura.`usuarios_idusuarios` = usuarios.`idusuarios`
+where $P!{condicion}
+GROUP BY
+     producto.nombre]]>
+		</queryString>
+		<field name="factura_idfactura" class="java.lang.Long">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="factura_detalle_cantidad" class="java.math.BigDecimal"/>
+		<field name="factura_total" class="java.math.BigDecimal"/>
+		<field name="metodo" class="java.lang.String"/>
+		<field name="producto_nombre" class="java.lang.String"/>
+		<field name="tipo_producto_tipo_producto" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="totalfacturasCredito" uuid="2c73acdc-0b17-46ce-9167-f49bc5ec0d55">
+		<parameter name="condicion" class="java.lang.String"/>
+		<parameter name="totalcredito" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     producto.`nombre` AS producto_nombre,     
+    count( factura.`idfactura`) AS factura_idfactura,
+    sum( factura_detalle.`cantidad`) AS factura_detalle_cantidad,
+    sum( factura.`total`) AS factura_total
+FROM
+     `factura` factura INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+     INNER JOIN `producto` producto ON factura_detalle.`producto_idproducto` = producto.`idproducto`
+  INNER JOIN `usuarios` usuarios ON factura.`usuarios_idusuarios` = usuarios.`idusuarios`
+where $P!{condicion} and metodo_pago='Credito'
+group by producto.nombre]]>
+		</queryString>
+		<field name="producto_nombre" class="java.lang.String"/>
+		<field name="factura_idfactura" class="java.lang.Long">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="factura_detalle_cantidad" class="java.math.BigDecimal"/>
+		<field name="factura_total" class="java.math.BigDecimal"/>
+		<variable name="total" class="java.lang.String">
+			<variableExpression><![CDATA[]]></variableExpression>
+		</variable>
+		<variable name="variable1" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="notas" uuid="03dd465d-d994-42af-a2fd-1b4f05521fa0">
+		<parameter name="cnotas" class="java.lang.String"/>
+		<parameter name="totaln" class="java.lang.Double">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     count(nota_credito.idnota_credito) AS notas,
+     sum(nota_credito.`valor_modificacion`) AS nota_credito_valor_modificacion,
+     nota_credito_detalle.`cantidad` AS nota_credito_detalle_cantidad,
+     producto.`nombre` AS producto_nombre
+FROM
+     `nota_credito` nota_credito INNER JOIN `nota_credito_detalle` nota_credito_detalle ON nota_credito.`idnota_credito` = nota_credito_detalle.`nota_credito_idnota_credito`
+     INNER JOIN `producto` producto ON nota_credito_detalle.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON nota_credito.`usuarios_idusuarios` = usuarios.`idusuarios`
+where $P!{cnotas}
+GROUP BY
+     producto.`nombre`]]>
+		</queryString>
+		<field name="notas" class="java.lang.Long"/>
+		<field name="nota_credito_valor_modificacion" class="java.math.BigDecimal"/>
+		<field name="nota_credito_detalle_cantidad" class="java.math.BigDecimal"/>
+		<field name="producto_nombre" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="condicion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechai" class="java.lang.String"/>
+	<parameter name="fechaf" class="java.lang.String"/>
+	<parameter name="despachador" class="java.lang.String"/>
+	<parameter name="condicionf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\r\\Desktop\\Advgp1.0\\Advgp2.0.1\\src\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cnotas" class="java.lang.String"/>
+	<parameter name="condicion1" class="java.lang.String"/>
+	<parameter name="totaln" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="consolidado" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalfc" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="totalp" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 
+	factura_detalle_cantidad AS factura_detalle_cantidad,
+     factura_total AS  factura_total,
+	configuracion_nmanguera AS configuracion_nmanguera,
+    producto_nombre AS producto_nombre,
+    metodo_pago as metodo ,
+numero as numero,
+nombre_c as nombrec	
+from 
+
+	(
+	SELECT
+     factura_detalle.`cantidad` AS factura_detalle_cantidad,
+     factura.`total` AS factura_total,
+     configuracion.`nmanguera` AS configuracion_nmanguera,
+     producto.`nombre` AS producto_nombre,
+	factura.fecha as fecha,
+	factura.hora as hora,
+	usuarios.nombre as nombre,
+	factura.metodo_pago as metodo_pago,
+	factura.numero as numero,
+	cliente.nombre as nombre_c
+FROM
+     `factura` factura INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+     INNER JOIN `configuracion` configuracion ON factura_detalle.`configuracion_nmanguera` = configuracion.`nmanguera`
+     INNER JOIN `producto` producto ON factura_detalle.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON factura.`usuarios_idusuarios` = usuarios.`idusuarios`
+ INNER JOIN `cliente` cliente ON factura.`cliente_idcliente` = cliente.`idcliente`
+UNION all
+SELECT
+     pagare.`cantidad` AS factura_detalle_cantidad,
+     pagare.`total` AS factura_total,
+     pagare.`configuracion_nmanguera` AS configuracion_nmanguera,
+     producto.`nombre` AS producto_nombre,
+	 pagare.fecha as fecha,
+	pagare.hora as hora,
+	usuarios.nombre as nombre,
+	'pagare' as metodo_pago,
+	pagare.idpagare as numero,
+	cliente.nombre as nombre_c
+FROM
+     `configuracion` configuracion INNER JOIN `pagare` pagare ON configuracion.`nmanguera` = pagare.`configuracion_nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON pagare.`usuarios_idusuarios` = usuarios.`idusuarios`	
+      INNER JOIN `cliente` cliente ON pagare.`cliente_idcliente` = cliente.`idcliente`	
+)as A 
+where $P!{condicion1}]]>
+	</queryString>
+	<field name="factura_detalle_cantidad" class="java.math.BigDecimal"/>
+	<field name="factura_total" class="java.math.BigDecimal"/>
+	<field name="configuracion_nmanguera" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="metodo" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombrec" class="java.lang.String"/>
+	<variable name="factura_total_1" class="java.math.BigDecimal" resetType="Column" calculation="System">
+		<variableExpression><![CDATA[$F{factura_total}]]></variableExpression>
+	</variable>
+	<variable name="pagare_idpagare_1" class="java.lang.Long" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="factura_detalle_cantidad_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_detalle_cantidad}]]></variableExpression>
+	</variable>
+	<variable name="factura_total_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_total}]]></variableExpression>
+	</variable>
+	<variable name="pagare_total_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="factura_total_3" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_total}]]></variableExpression>
+	</variable>
+	<variable name="pagare_total_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="factura_detalle_cantidad_2" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_detalle_cantidad}]]></variableExpression>
+	</variable>
+	<variable name="factura_total_4" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_total}]]></variableExpression>
+	</variable>
+	<variable name="factura_total_SUM" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_total}]]></variableExpression>
+	</variable>
+	<variable name="factura_total_5" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_total}]]></variableExpression>
+	</variable>
+	<variable name="factura_detalle_cantidad_3" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_detalle_cantidad}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="37db9d3b-5178-48fc-9586-1eddad8778dd" x="194" y="19" width="320" height="31"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ventas Por Despachador]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="95" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="1238ee11-84b8-4dd8-9d2c-7d4e274e42c6" x="0" y="0" width="157" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="44619541-a7c7-40ea-a54c-c131484151a0" x="128" y="20" width="100" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha desde:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="43bb2a6d-07bc-4240-ab6a-e3f9a436c1a3" x="583" y="33" width="100" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Hasta]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7e9febe7-d3eb-401c-b8f4-d8cdbcf025af" x="228" y="20" width="100" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="690a243d-3e74-44f3-86ca-63fefa92cc8a" x="683" y="33" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="85e1d868-ffaa-4142-9473-1ef213e809c7" x="128" y="53" width="100" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Despachador]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4286ba90-073d-4ddc-af9f-761da807a693" x="228" y="53" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{despachador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4f7a195c-4e37-441c-bd8d-380298ed3bcd" x="683" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="e7519d30-9c39-45f6-8a02-4bd1ebddb0e2" x="763" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="12a1a363-8260-4d83-83dc-52d64f5032bc" x="0" y="0" width="70" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nmanguera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e5e2cfd-3b43-4951-b4d7-b79978b63b80" x="84" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7e034256-1716-4867-994f-8fa3b36a6c86" x="250" y="0" width="91" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e2ad791a-a388-4e15-8494-ed7b1e51c7f2" x="184" y="0" width="66" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fbd6801a-0799-47ea-91d4-a03f3e3dcf63" x="342" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Metodo Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d793e872-a1e3-44c5-8685-eb0aaaa19b14" x="442" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ea6269c5-70cd-4926-b5c5-34cb28217370" x="583" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Cliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="9ee1ac18-fc30-4646-b431-0492cc193a7a" x="0" y="3" width="804" height="23">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="839d3200-04a0-4d98-9f12-b1be0d11d57d" x="250" y="6" width="91" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="365fc61f-50f6-4c2f-9ce4-9c6a9167e81f" x="4" y="5" width="66" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{configuracion_nmanguera}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="92138ca0-96ca-462a-bdb6-5a9419639696" x="184" y="6" width="66" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_detalle_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="97bca415-1683-472b-82f7-0025cdea19ca" x="84" y="6" width="100" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{factura_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="53ca8b75-c320-4dc8-8960-38a66d62e500" x="342" y="3" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{metodo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9e7d1aef-58d1-4a53-bca0-c977fac368c1" x="442" y="3" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b2208de2-b4c9-4638-baa5-4b75b5949a3b" x="583" y="4" width="220" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombrec}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24">
+			<rectangle>
+				<reportElement uuid="e42d2174-8cf6-435f-b2bb-bd3dc70bd2c4" x="0" y="0" width="542" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8ac52b86-8824-41d4-9fb1-f50bc8d9dd11" x="4" y="0" width="66" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totales]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="148bc9bf-31ae-47d4-9b2f-e586cde4f487" x="184" y="0" width="66" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{factura_total_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="390deb76-fb4a-4cf3-836f-dbbffd276965" x="84" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{factura_detalle_cantidad_3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="145">
+			<rectangle radius="10">
+				<reportElement uuid="4a9236ee-1ad8-4729-b577-5f1b8e58c9d4" x="0" y="0" width="426" height="139"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="53e2cc6b-097c-4ca7-8f55-cf84013157fc" x="0" y="25" width="228" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL FACTURAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="391ca404-5975-403e-b310-5f07bedc7480" x="0" y="56" width="228" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL PAGARES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e911d20b-5537-498d-81ce-84c92dd82b4a" x="0" y="87" width="228" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL NOTAS DE CREDITO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ce1ed9e5-295c-453d-8101-7ee6dd4d78e8" x="100" y="0" width="228" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONSOLIDADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ad4ad378-5306-4a44-99fd-265c0a57bc71" x="4" y="119" width="224" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL CONSOLIDADO]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="fc9af709-8465-4d9a-bf94-c076230198f6" x="228" y="25" width="182" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalfc}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="13d9e9f3-36ed-4de3-bef0-4ecb1e6a6715" x="228" y="87" width="182" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totaln}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="4f0db951-821a-4cb4-b38a-3051846037f4" x="228" y="119" width="182" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{consolidado}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="4551aa7e-e55d-48e9-acda-1ab6078ee9be" x="228" y="56" width="182" height="20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="557" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="7bd817b5-a865-47a3-a3ec-fe7331ba744f" key="table 18" style="table 18" x="0" y="227" width="555" height="128"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="notas" uuid="51f3fe2d-f80e-45d8-9a5e-ebd12f75e9cd">
+						<datasetParameter name="totaln">
+							<datasetParameterExpression><![CDATA[$P{totaln}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="cnotas">
+							<datasetParameterExpression><![CDATA[$P{cnotas}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="131" uuid="07a0af8e-1785-4b0d-96cc-c3d80c06e714">
+						<jr:tableHeader style="table 18_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a993ebbd-8681-48f2-ac6c-c394035ae244" x="0" y="0" width="131" height="30"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[NOTAS CREDITO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="table 18_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 18_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c84d4ead-2d37-4d5f-a51c-f57613eabad0" x="0" y="0" width="131" height="30"/>
+								<textElement>
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[DESCRIPCION]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 18_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="8c5285b4-80f0-4477-80a0-ebf369fc6132" x="0" y="0" width="131" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="122" uuid="2cc51a29-6d84-4c0f-bb51-960e0990d706">
+						<jr:tableHeader style="table 18_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 18_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 18_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="8f071f28-c003-4bac-b4d2-7608186e160a" x="0" y="0" width="122" height="30"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[# TRANSACCIONES]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 18_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c25bc882-8999-4c19-b84c-1776b456edfa" x="0" y="0" width="122" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{notas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="87fcdf0f-f181-4f6c-86d3-babd7b6c0dcd">
+						<jr:tableHeader style="table 18_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 18_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 18_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="742b671d-cd86-494c-97b1-1b846ac9fbe9" x="0" y="0" width="90" height="30"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CANTIDAD]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 18_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="58750f74-5456-4d4b-b09a-6d8f59215992" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{nota_credito_detalle_cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="afb8c040-bc60-4f78-a603-99e63a8661fb">
+						<jr:tableHeader style="table 18_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 18_TH" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="2be3740d-ad6b-430d-973f-c927a23131a5" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$P{totaln}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:columnHeader style="table 18_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="94e3f921-b645-4a26-9c09-aa8edcbe6627" x="0" y="0" width="90" height="30"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 18_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="572ae7a9-eab6-473b-9400-201652984067" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{nota_credito_valor_modificacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<crosstab>
+				<reportElement uuid="f8ca6aec-b1b2-40cc-8c2c-a91d08aca85c" x="0" y="424" width="800" height="133"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="totalfacturasContado" uuid="158837df-97a3-435c-bebc-8b7702b6751b">
+							<datasetParameter name="condicion">
+								<datasetParameterExpression><![CDATA[$P{condicionf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="tipo_producto_tipo_producto" width="68" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{tipo_producto_tipo_producto}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="ad361042-858d-4a87-bd54-936c922a2b38" style="Crosstab Data Text" x="0" y="0" width="68" height="72"/>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{tipo_producto_tipo_producto}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="2ed4656e-1ad2-4339-bfdd-8f3b81d7b89e" x="0" y="0" width="136" height="25" forecolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total tipo_producto_tipo_producto]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="producto_nombre" width="68" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{producto_nombre}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="c83e6dd1-1b89-48a8-a523-22f1359847bc" style="Crosstab Data Text" x="0" y="0" width="68" height="44"/>
+								<textElement>
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{producto_nombre}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="cfb96509-a2c0-405a-8942-8f63798cc596" x="0" y="0" width="68" height="28"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total Producto]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="metodo" height="37" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{metodo}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="b872626c-4a5f-415c-8cda-0a35aabd6a49" style="Crosstab Data Text" x="0" y="0" width="132" height="20"/>
+								<textElement>
+									<font size="11" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{metodo}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement uuid="956fd409-ff1e-4a65-bb93-21a5daf32afd" style="Crosstab Data Text" x="73" y="20" width="59" height="17"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true" isUnderline="false"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="0b0c9aa2-498d-420a-8a9e-aa9a43568507" style="Crosstab Data Text" x="1" y="20" width="72" height="17"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement>
+									<font size="9" isBold="true" isUnderline="false"/>
+								</textElement>
+								<text><![CDATA[Cantidad]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="37f1e9e8-f3a8-4664-9fd0-4466391e06e4" x="0" y="0" width="93" height="37"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTALES]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="factura_totalMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{factura_total}]]></measureExpression>
+				</measure>
+				<measure name="galonaje" class="java.lang.Double" calculation="Sum">
+					<measureExpression><![CDATA[$F{factura_detalle_cantidad}]]></measureExpression>
+				</measure>
+				<crosstabCell width="132" height="44">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="81e0de21-5d35-4a50-8386-3ce88577150b" style="Crosstab Data Text" x="0" y="0" width="72" height="44"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{galonaje}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="3f25c55f-1aec-45a0-b582-96701f56bf53" style="Crosstab Data Text" x="73" y="0" width="59" height="44"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_totalMeasure}]]></textFieldExpression>
+						</textField>
+						<line>
+							<reportElement uuid="3ac6e9d5-8bf1-47c4-a462-419773c4da2c" style="Crosstab Data Text" x="103" y="17" width="1" height="1"/>
+						</line>
+						<line>
+							<reportElement uuid="88a40af0-01ba-4ead-836c-e895e12a9bbc" style="Crosstab Data Text" x="72" y="0" width="1" height="44"/>
+						</line>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="132" height="25" rowTotalGroup="tipo_producto_tipo_producto">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="db4295fb-0d6f-4ee4-a948-6a9e56a9173d" style="Crosstab Data Text" x="0" y="0" width="132" height="25" forecolor="#FFFFFF"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="93" height="44" columnTotalGroup="metodo">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="1a8e6ac3-7ef8-4c78-a0f2-2764f9633598" style="Crosstab Data Text" x="0" y="0" width="93" height="44"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="93" rowTotalGroup="tipo_producto_tipo_producto" columnTotalGroup="metodo">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="91e6700e-5c4b-423c-91d2-71182be5ce08" style="Crosstab Data Text" x="0" y="0" width="93" height="25" forecolor="#FFFFFF"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="132" height="28" rowTotalGroup="producto_nombre">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="f2cd0605-7cb2-411e-a35c-fdffbf60f8d4" style="Crosstab Data Text" x="73" y="1" width="59" height="27"/>
+							<textElement verticalAlignment="Bottom">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{factura_totalMeasure}]]></textFieldExpression>
+						</textField>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="ba6fe842-d1a3-4211-bf91-ab1f13c23e7a" style="Crosstab Data Text" x="1" y="0" width="71" height="27"/>
+							<textElement verticalAlignment="Bottom">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{galonaje}]]></textFieldExpression>
+						</textField>
+						<line>
+							<reportElement uuid="caad0068-f8f9-45ca-a26a-e945eb188510" style="Crosstab Data Text" x="72" y="0" width="1" height="27"/>
+						</line>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="93" height="28" rowTotalGroup="producto_nombre" columnTotalGroup="metodo">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="#,##0.00">
+							<reportElement uuid="582d8a5f-77b8-4029-bd70-2e2274ede27c" style="Crosstab Data Text" x="0" y="0" width="93" height="28"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<componentElement>
+				<reportElement uuid="3321f81b-f94f-41dd-9a48-4f35e142a7ee" key="table 5" style="table 5" x="0" y="42" width="557" height="115"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="totalpagares" uuid="96e2ef69-b820-423b-be73-ef6c9e0559a4">
+						<datasetParameter name="condicion">
+							<datasetParameterExpression><![CDATA[$P{condicion}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="totalp">
+							<datasetParameterExpression><![CDATA[$P{totalp}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="128" uuid="3bf5068c-4635-4545-a2bb-07722de0dc37">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a81c1521-93e6-46c7-94ac-0d602353675b" x="0" y="0" width="128" height="30"/>
+								<textElement textAlignment="Justified" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Pagares]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="d799fb96-6cc3-4bef-bb39-a0fe7ba1e22b" x="0" y="0" width="128" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[DESCRIPCION	]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="945817da-1505-4927-af1c-381a890a5389" x="0" y="0" width="128" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="ac22c076-032d-4370-a6fd-9adcc2d85ca5">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="47050c13-dd07-477a-b681-4dcfd495ce8a" x="0" y="0" width="90" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[# TRANS]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="5b178fb5-e122-4435-b6b3-ad09dcaf585a" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{pagare_idpagare}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="143" uuid="23490ece-e390-4800-a74f-fbf9a7d5b48c">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="255736a1-5b05-456a-8f6f-85662f8dc8bc" x="0" y="0" width="142" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[CANTIDAD]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="db5b2fa9-02b2-4967-975d-66d95f823fdf" x="0" y="0" width="142" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{pagare_cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="150" uuid="493cea11-4c27-429d-851e-ea787b292010">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="3609c156-e3db-4841-9089-445c7729ff09" x="0" y="0" width="150" height="30"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$P{totalp}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="042727e2-0441-4f96-aaf4-245eca5e9fb2" x="0" y="0" width="150" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="dd176419-8194-4084-bc25-754d8fb14957" x="0" y="0" width="150" height="20"/>
+								<textElement textAlignment="Justified"/>
+								<textFieldExpression><![CDATA[$F{pagare_total}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

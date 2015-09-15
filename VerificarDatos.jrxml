@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="814" leftMargin="14" rightMargin="14" topMargin="14" bottomMargin="14" uuid="d7d93cef-5dbf-438c-abe0-5a4372a2fd75">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="65"/>
+	<subDataset name="Estacion_1" uuid="7d81e8c8-2702-44cc-bcbd-df6621e79721">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     datos_gasolinera.`razon_social` AS datos_gasolinera_razon_social,
+     datos_gasolinera.`ruc` AS datos_gasolinera_ruc,
+     datos_gasolinera.`direccion` AS datos_gasolinera_direccion,
+     datos_gasolinera.`nombre_comercial` AS datos_gasolinera_nombre_comercial
+FROM
+     `datos_gasolinera` datos_gasolinera]]>
+		</queryString>
+		<field name="datos_gasolinera_razon_social" class="java.lang.String"/>
+		<field name="datos_gasolinera_ruc" class="java.lang.String"/>
+		<field name="datos_gasolinera_direccion" class="java.lang.String"/>
+		<field name="datos_gasolinera_nombre_comercial" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Andrea\\Documents\\NetBeansProjects\\Reportes\\src\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="desde" class="java.lang.String"/>
+	<parameter name="hasta" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select * from adv_facturacion.datos_gasolinera]]>
+	</queryString>
+	<field name="iddatos_gasolinera" class="java.lang.Integer"/>
+	<field name="razon_social" class="java.lang.String"/>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="email_estacion" class="java.lang.String"/>
+	<field name="secuencia1_factura" class="java.lang.String"/>
+	<field name="despachadores_turno" class="java.lang.Integer"/>
+	<field name="tipo_ambiente" class="java.lang.String"/>
+	<field name="obligado_llevar_contabilidad" class="java.lang.String"/>
+	<field name="nombre_comercial" class="java.lang.String"/>
+	<field name="contribuyente_especial" class="java.lang.String"/>
+	<field name="certificado_digital" class="java.lang.Object"/>
+	<field name="contraseña_certificado" class="java.lang.Object"/>
+	<field name="tipo_cierre_turnos" class="java.lang.Integer"/>
+	<field name="contraseña_mail" class="java.lang.Object"/>
+	<field name="mantenimiento" class="java.lang.Boolean"/>
+	<field name="pagina_web" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="567" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="2736a0ec-b5b0-4d66-97e2-5e37de13b015" x="0" y="0" width="814" height="184"/>
+				<subreportParameter name="desde">
+					<subreportParameterExpression><![CDATA[$P{desde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="hasta">
+					<subreportParameterExpression><![CDATA[$P{hasta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Contable.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="6b35b198-4631-496c-b1aa-ff884e059f72" x="0" y="184" width="814" height="1"/>
+			</break>
+			<break>
+				<reportElement uuid="573c60ac-2670-498d-84a0-d0d5a56ba390" x="0" y="413" width="814" height="1"/>
+			</break>
+			<subreport>
+				<reportElement uuid="4bfb9d42-0e0c-4cb3-bd89-223c99aafeab" x="0" y="195" width="814" height="208"/>
+				<subreportParameter name="desde">
+					<subreportParameterExpression><![CDATA[$P{desde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="hasta">
+					<subreportParameterExpression><![CDATA[$P{hasta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["SRI.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="56f30323-3f5e-455d-97df-ca68df80e343" x="0" y="414" width="814" height="153"/>
+				<subreportParameter name="desde">
+					<subreportParameterExpression><![CDATA[$P{desde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="hasta">
+					<subreportParameterExpression><![CDATA[$P{hasta}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Web.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

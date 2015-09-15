@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><factura id="comprobante" version="1.0.0">
+    <infoTributaria>
+        <ambiente>1</ambiente>
+        <tipoEmision>1</tipoEmision>
+        <razonSocial>Claudio Vallejo</razonSocial>
+        <nombreComercial>CLaudio Vallejo</nombreComercial>
+        <ruc>0102595295001</ruc>
+        <claveAcceso>1009201401010259529500110010010000000521234567813</claveAcceso>
+        <codDoc>01</codDoc>
+        <estab>001</estab>
+        <ptoEmi>001</ptoEmi>
+        <secuencial>000000052</secuencial>
+        <dirMatriz>Huayba Capac</dirMatriz>
+    </infoTributaria>
+    <infoFactura>
+        <fechaEmision>10/09/2014</fechaEmision>
+        <dirEstablecimiento>Huayba Capac</dirEstablecimiento>
+        <obligadoContabilidad>NO</obligadoContabilidad>
+        <tipoIdentificacionComprador>04</tipoIdentificacionComprador>
+        <razonSocialComprador>JARA CAMPOVERDE HUGO BENJAMIN</razonSocialComprador>
+        <identificacionComprador>0100000389001</identificacionComprador>
+        <totalSinImpuestos>1.34</totalSinImpuestos>
+        <totalDescuento>0.0</totalDescuento>
+        <totalConImpuestos>
+            <totalImpuesto>
+                <codigo>2</codigo>
+                <codigoPorcentaje>2</codigoPorcentaje>
+                <baseImponible>1.34</baseImponible>
+                <valor>0.16</valor>
+            </totalImpuesto>
+        </totalConImpuestos>
+        <propina>0.0</propina>
+        <importeTotal>1.5</importeTotal>
+        <moneda>Dolar</moneda>
+    </infoFactura>
+    <detalles>
+        <detalle>
+            <codigoPrincipal>1</codigoPrincipal>
+            <codigoAuxiliar>1</codigoAuxiliar>
+            <descripcion>Extra</descripcion>
+            <cantidad>1.01</cantidad>
+            <precioUnitario>1.33</precioUnitario>
+            <descuento>0.0</descuento>
+            <precioTotalSinImpuesto>1.34</precioTotalSinImpuesto>
+            <impuestos>
+                <impuesto>
+                    <codigo>2</codigo>
+                    <codigoPorcentaje>2</codigoPorcentaje>
+                    <tarifa>12</tarifa>
+                    <baseImponible>1.34</baseImponible>
+                    <valor>0.16</valor>
+                </impuesto>
+            </impuestos>
+        </detalle>
+    </detalles>
+    <infoAdicional>
+        <campoAdicional nombre="Imprime">Advadvantech</campoAdicional>
+    </infoAdicional>
+</factura>

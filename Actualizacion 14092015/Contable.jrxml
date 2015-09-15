@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="814" leftMargin="14" rightMargin="14" topMargin="14" bottomMargin="14" isSummaryWithPageHeaderAndFooter="true" uuid="5ca5d355-cfee-447a-9c9b-64472eaf5036">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="7"/>
+	<property name="ireport.y" value="303"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Estacion" uuid="7d81e8c8-2702-44cc-bcbd-df6621e79721">
+		<queryString>
+			<![CDATA[SELECT
+     datos_gasolinera.`razon_social` AS datos_gasolinera_razon_social,
+     datos_gasolinera.`ruc` AS datos_gasolinera_ruc,
+     datos_gasolinera.`direccion` AS datos_gasolinera_direccion,
+     datos_gasolinera.`nombre_comercial` AS datos_gasolinera_nombre_comercial
+FROM
+     `datos_gasolinera` datos_gasolinera]]>
+		</queryString>
+		<field name="datos_gasolinera_razon_social" class="java.lang.String"/>
+		<field name="datos_gasolinera_ruc" class="java.lang.String"/>
+		<field name="datos_gasolinera_direccion" class="java.lang.String"/>
+		<field name="datos_gasolinera_nombre_comercial" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="Contable_error" uuid="b359c54f-2ac3-4627-8c31-63ebc137a05b">
+		<parameter name="desde" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="hasta" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[Select * from (select 'FACTURA' as tipo,adv_facturacion.factura.numero as num,adv_facturacion.factura.fecha as fecha,
+adv_facturacion.factura.hora as hora,adv_facturacion.factura.total as total,adv_facturacion.factura.log as motivo,adv_facturacion.usuarios.nombre as usuario
+from 
+adv_facturacion.factura, adv_facturacion.usuarios
+where
+adv_facturacion.factura.enviado_contable=2 
+and adv_facturacion.factura.usuarios_idusuarios=adv_facturacion.usuarios.idusuarios
+and adv_facturacion.factura.fecha>=$P{desde} and adv_facturacion.factura.fecha<=$P{hasta}
+union all
+select 'NOTA CREDITO' as tipo,adv_facturacion.nota_credito.numero as num,adv_facturacion.nota_credito.fecha as fecha,
+adv_facturacion.nota_credito.hora as hora,adv_facturacion.nota_credito.valor_modificacion,adv_facturacion.nota_credito.log as error,adv_facturacion.usuarios.nombre as usuario
+from 
+adv_facturacion.nota_credito, adv_facturacion.usuarios
+where
+adv_facturacion.nota_credito.enviado_contable=2 
+and adv_facturacion.nota_credito.usuarios_idusuarios=adv_facturacion.usuarios.idusuarios
+and adv_facturacion.nota_credito.fecha>=$P{desde} and adv_facturacion.nota_credito.fecha<=$P{hasta}) as u
+order by tipo,num]]>
+		</queryString>
+		<field name="tipo" class="java.lang.String"/>
+		<field name="num" class="java.lang.String"/>
+		<field name="fecha" class="java.lang.String"/>
+		<field name="hora" class="java.lang.String"/>
+		<field name="total" class="java.math.BigDecimal"/>
+		<field name="motivo" class="java.lang.String"/>
+		<field name="usuario" class="java.lang.String"/>
+		<variable name="con_error" class="java.lang.Double" calculation="Sum">
+			<variableExpression><![CDATA[$F{total}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="desde" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{desde}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="hasta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{hasta}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select * from (select 'FACTURAS' as tipo,adv_facturacion.punto_emision.s2 as punto, 
+(CASE adv_facturacion.factura.enviado_contable WHEN 0 THEN 'NO ENVIADO' WHEN 1 THEN 'ENVIADO' ELSE 'CON ERROR' END) as estado,
+adv_facturacion.factura.total as total
+from 
+adv_facturacion.factura,adv_facturacion.punto_emision
+where
+adv_facturacion.factura.fecha>=$P{desde} and adv_facturacion.factura.fecha<=$P{hasta}
+and adv_facturacion.punto_emision.idpunto_emision=adv_facturacion.factura.punto_emision_idpunto_emision
+union all
+select 'NOTAS DE CREDITO' as tipo,adv_facturacion.punto_emision.s2 as punto,
+(CASE adv_facturacion.nota_credito.enviado_contable WHEN 0 THEN 'NO ENVIADO' WHEN 1 THEN 'ENVIADO' ELSE 'CON ERROR' END) as estado,
+adv_facturacion.nota_credito.valor_modificacion as total
+from 
+adv_facturacion.nota_credito,adv_facturacion.punto_emision
+where
+adv_facturacion.nota_credito.fecha>=$P{desde} and adv_facturacion.nota_credito.fecha<=$P{hasta}
+and adv_facturacion.punto_emision.idpunto_emision=adv_facturacion.nota_credito.punto_emision_idpunto_emision) as u]]>
+	</queryString>
+	<field name="tipo" class="java.lang.String"/>
+	<field name="punto" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="total" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="149" splitType="Stretch">
+			<image>
+				<reportElement uuid="20f15a0e-6410-449a-b57f-2bc59633055d" x="219" y="10" width="94" height="82"/>
+				<imageExpression><![CDATA["ad.jpg"]]></imageExpression>
+			</image>
+			<subreport>
+				<reportElement uuid="ff76cb26-e407-4b8c-a57c-f0d7a977f7cb" x="313" y="10" width="283" height="82"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Gasolinera.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="35355578-3c7a-4409-8841-e9193fa76239" x="446" y="92" width="57" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[HASTA EL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3bb1766a-d147-40ae-887d-8e515b69e013" x="331" y="92" width="52" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DESDE EL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="16b71760-d7dd-4b0c-9d9c-d4e05a5a19ea" x="325" y="128" width="136" height="20"/>
+				<textElement/>
+				<text><![CDATA[REPORTE GENERADO EL :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="ab3fd66b-42a3-44c8-8b9b-4c8f051b49a4" x="461" y="128" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e547b7d6-779f-4bdd-9a90-74fb1fd548a0" x="384" y="92" width="62" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{desde}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a0151428-63b2-4aae-96d0-26b59fa8196c" x="506" y="92" width="52" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{hasta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="333" splitType="Stretch">
+			<crosstab>
+				<reportElement uuid="70a2a242-b14e-45ca-acb0-ba1eef45300a" x="39" y="55" width="736" height="145"/>
+				<rowGroup name="estado" width="94">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{estado}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="168da006-2d0e-4919-b4e7-5ee9945094dd" style="Crosstab Data Text" x="0" y="0" width="94" height="25"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{estado}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="tipo" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{tipo}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="3b9cd8f0-54d9-4bcf-8d35-9f6cc7c811be" style="Crosstab Data Text" x="0" y="0" width="155" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{tipo}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="e491bd6b-7ff0-4126-88d2-7ff80c03041b" x="0" y="0" width="79" height="60" forecolor="#FFFFFF"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="punto" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{punto}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="43a9645e-5121-403a-8545-3bceee1a44d5" style="Crosstab Data Text" x="0" y="0" width="70" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{punto}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="7d4a6535-a7ca-4660-ab0d-fc7efca0e959" x="0" y="0" width="85" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="totalMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{total}]]></measureExpression>
+				</measure>
+				<crosstabCell width="70" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00;-###0.00">
+							<reportElement uuid="a8580b22-b8b8-4f88-b501-423b0e7fa12e" style="Crosstab Data Text" x="18" y="1" width="52" height="24"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{totalMeasure}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement uuid="0f25b553-0dc0-4add-a707-2db6b955fce4" style="Crosstab Data Text" x="0" y="0" width="18" height="24"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<text><![CDATA[$]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="estado">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="6149c7ae-0164-4452-bee8-fc032fc9b8bc" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="79" height="25" columnTotalGroup="tipo">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00;-###0.00">
+							<reportElement uuid="b7ebcbc0-2464-4b57-933c-118612116333" style="Crosstab Data Text" x="16" y="1" width="55" height="24" forecolor="#FFFFFF"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{totalMeasure}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement uuid="93333298-ffb0-4be6-8b84-118188e34e42" style="Crosstab Data Text" x="0" y="0" width="16" height="24" forecolor="#FFFFFF"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<text><![CDATA[$]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="estado" columnTotalGroup="tipo">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="a3ec4806-201d-48b5-b42d-91c18907b4ac" style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="85" height="25" columnTotalGroup="punto">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField pattern="###0.00;-###0.00">
+							<reportElement uuid="d1d4580d-0ceb-4fc1-af68-6806ea36528c" style="Crosstab Data Text" x="5" y="1" width="72" height="24"/>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{totalMeasure}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement uuid="0d10697e-c2de-4669-93b9-2bbdb803c30a" style="Crosstab Data Text" x="0" y="0" width="18" height="24"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<text><![CDATA[$]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="estado" columnTotalGroup="punto">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="fd098161-c396-4858-9d3a-0c795758fcba" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<staticText>
+				<reportElement uuid="29a901e6-f7d4-4ce2-b651-7015f98873ed" x="0" y="10" width="814" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE FACTURAS EN CONTABLE]]></text>
+			</staticText>
+			<frame>
+				<reportElement uuid="da6ae809-b0cc-4bb9-97ea-106063414de1" x="0" y="48" width="39" height="152"/>
+			</frame>
+			<staticText>
+				<reportElement uuid="29a901e6-f7d4-4ce2-b651-7015f98873ed" x="0" y="213" width="814" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DETALLE DE FACTURAS QUE NO HAN PODIDO PASARSE AL CONTABLE]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="7eedc3bd-f6d8-4f83-abd2-fddcd8302820" key="table 1" style="table 1" x="39" y="251" width="775" height="74"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Contable_error" uuid="19cf71b0-5937-4fc9-85d3-72e5fea93393">
+						<datasetParameter name="desde">
+							<datasetParameterExpression><![CDATA[$P{desde}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="hasta">
+							<datasetParameterExpression><![CDATA[$P{hasta}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="a1743137-a796-4924-97b3-e12e36d696b1">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="9b2ec8c1-c563-475e-8327-fc42903d4ffa" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TIPO DOCUMENTO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="6910192a-6f61-44af-bf59-26b63f6f7be5" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="108" uuid="6d005d6d-5ade-4be0-b1a4-25419ddf21b4">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="31fc6c39-966f-4987-b099-57435c041839" x="0" y="0" width="108" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[NÚMERO DOCUMENTO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c170a3fb-f71a-4ce1-a17a-5b434eebc745" x="0" y="0" width="108" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{num}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b6b8c841-4e75-4096-821e-fa4cd388dcce">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="ac848a92-5dad-4477-9da2-86d86c6bc1c0" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="c137dcca-4160-41ac-81b6-c77f3251c461" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b50e259f-9e2d-47f0-aaf1-74a9aa0954b0">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="0d878fa7-0450-49ad-a5b6-2d41c099b686" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[HORA]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="21944b35-b87f-46be-ad8b-f03c4482e803" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="ed85e646-0dc6-49b3-8a6b-a35a73cb6d98" x="0" y="0" width="90" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="24336d18-bc0d-4e7b-a7f2-14148c8db020">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b21fe814-b483-47d0-88a6-e0a5b315797a" x="0" y="0" width="82" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter height="30" rowSpan="1">
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="be3db373-aa42-43f4-8f33-0428cc76b0b8" x="12" y="0" width="63" height="30"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{con_error}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement uuid="e1f088b2-c90c-4dd2-871a-d6f8dc6d996c" x="0" y="0" width="12" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<text><![CDATA[$]]></text>
+							</staticText>
+						</jr:columnFooter>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField pattern="###0.00;-###0.00">
+								<reportElement uuid="2d88a056-15c5-4be3-9cb9-5fc657b4b544" x="12" y="0" width="63" height="20"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement uuid="3a51927e-a6f8-4886-8c79-51161d265a53" x="0" y="0" width="12" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<text><![CDATA[$]]></text>
+							</staticText>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="142" uuid="cf949986-01be-478b-830c-349361dce377">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="6a57424f-97c5-467c-90cc-f9455ac5e1e3" x="0" y="0" width="142" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[MOTIVO DE ERROR]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="783f5ed7-03b9-4683-8064-9b1c7f10f7be" x="5" y="0" width="137" height="20"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{motivo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="155" uuid="6f750616-a928-4656-93ff-89465d37453b">
+						<jr:columnHeader style="table 1_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c8f42f1c-e15b-48bd-8632-919c1cfcd35b" x="0" y="0" width="155" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[USUARIO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 1_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="338b09cc-ec30-4d09-9fdd-04489f452b53" x="0" y="0" width="155" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{usuario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

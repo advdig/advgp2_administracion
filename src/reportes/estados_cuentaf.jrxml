@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ac9f65e9-1a13-4f78-b6f7-0e20bcd5c498">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="281"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="2d4d2712-eade-4165-a477-06b4e9883819">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     pagare.`total` AS pagare_total,
+     pagare.`cantidad` AS pagare_cantidad,
+     pagare.`fecha` AS pagare_fecha,
+     pagare.`hora` AS pagare_hora,
+     pagare.`idpagare` AS pagare_idpagare,
+     pagare.`placa` AS pagare_placa,
+     cliente.`cedula_ruc` AS cliente_cedula_ruc,
+     factura.`numero` AS factura_numero
+FROM
+     `cliente` cliente INNER JOIN `pagare` pagare ON cliente.`idcliente` = pagare.`cliente_idcliente`
+     INNER JOIN `factura` factura ON cliente.`idcliente` = factura.`cliente_idcliente`]]>
+		</queryString>
+		<field name="pagare_idpagare" class="java.lang.Integer"/>
+		<field name="pagare_total" class="java.math.BigDecimal"/>
+		<field name="pagare_cantidad" class="java.math.BigDecimal"/>
+		<field name="pagare_fecha" class="java.sql.Date"/>
+		<field name="pagare_hora" class="java.sql.Time"/>
+		<field name="pagare_placa" class="java.lang.String"/>
+		<field name="cliente_cedula_ruc" class="java.lang.String"/>
+		<field name="factura_numero" class="java.lang.String"/>
+		<group name="pagare_idpagare">
+			<groupExpression><![CDATA[$F{pagare_idpagare}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="fechai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaf" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="total" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imagen_fondo" class="java.lang.String"/>
+	<parameter name="marca" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\r\\Desktop\\Advgp1.0\\Advgp2.0.1\\src\\reportes\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="numero" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idfactura" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     cliente.`nombre` AS cliente_nombre,
+     cliente.`direccion` AS cliente_direccion,
+     cliente.`cedula_ruc` AS cliente_cedula_ruc,
+     cliente.`telefono` AS cliente_telefono,
+     cliente.`email` AS cliente_email,
+     cliente.`cupo_cliente` AS cliente_cupo_cliente,
+     factura.`Estado_factura` AS factura_Estado_factura,
+     factura.`numero` AS factura_numero,
+     factura.`fecha` AS factura_fecha,
+     factura.`hora` AS factura_hora,
+     factura.`metodo_pago` AS factura_metodo_pago,
+     factura.`total` AS factura_detalle_total,
+     datos_gasolinera.`iddatos_gasolinera` AS datos_gasolinera_iddatos_gasolinera,
+     datos_gasolinera.`razon_social` AS datos_gasolinera_razon_social,
+     datos_gasolinera.`ruc` AS datos_gasolinera_ruc,
+     datos_gasolinera.`direccion` AS datos_gasolinera_direccion,
+     producto.`nombre` AS producto_nombre,
+     credito_cliente.`cupo_cliente` AS credito_cliente_cupo_cliente,(select sum(factura_detalle.`total`) FROM
+     `cliente` cliente INNER JOIN `factura` factura ON cliente.`idcliente` = factura.`cliente_idcliente`
+     INNER JOIN `datos_gasolinera` datos_gasolinera ON factura.`datos_gasolinera_iddatos_gasolinera` = datos_gasolinera.`iddatos_gasolinera`
+    INNER JOIN `credito_cliente` credito_cliente ON cliente.`idcliente` = credito_cliente.`cliente_idcliente`
+ INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+WHERE
+    idcliente = $P{cliente}
+     and fecha BETWEEN $P{fechai} and $P{fechaf}
+     and metodo_pago = 'Credito' and Estado_factura="Autorizado"
+ 
+) AS total_mes
+FROM
+     `cliente` cliente INNER JOIN `factura` factura ON cliente.`idcliente` = factura.`cliente_idcliente`
+     INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+     INNER JOIN `datos_gasolinera` datos_gasolinera ON factura.`datos_gasolinera_iddatos_gasolinera` = datos_gasolinera.`iddatos_gasolinera`
+     INNER JOIN `configuracion` configuracion ON factura_detalle.`configuracion_nmanguera` = configuracion.`nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `credito_cliente` credito_cliente ON cliente.`idcliente` = credito_cliente.`cliente_idcliente`
+WHERE
+     idcliente = $P{cliente}
+     and factura.numero=$P{numero}
+group by   factura.`numero`]]>
+	</queryString>
+	<field name="cliente_nombre" class="java.lang.String"/>
+	<field name="cliente_direccion" class="java.lang.String"/>
+	<field name="cliente_cedula_ruc" class="java.lang.String"/>
+	<field name="cliente_telefono" class="java.lang.String"/>
+	<field name="cliente_email" class="java.lang.String"/>
+	<field name="cliente_cupo_cliente" class="java.math.BigDecimal"/>
+	<field name="factura_Estado_factura" class="java.lang.String"/>
+	<field name="factura_numero" class="java.lang.String"/>
+	<field name="factura_fecha" class="java.sql.Date"/>
+	<field name="factura_hora" class="java.sql.Time"/>
+	<field name="factura_metodo_pago" class="java.lang.String"/>
+	<field name="factura_detalle_total" class="java.math.BigDecimal"/>
+	<field name="datos_gasolinera_iddatos_gasolinera" class="java.lang.Integer"/>
+	<field name="datos_gasolinera_razon_social" class="java.lang.String"/>
+	<field name="datos_gasolinera_ruc" class="java.lang.String"/>
+	<field name="datos_gasolinera_direccion" class="java.lang.String"/>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="credito_cliente_cupo_cliente" class="java.math.BigDecimal"/>
+	<field name="total_mes" class="java.math.BigDecimal"/>
+	<variable name="factura_detalle_total_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_detalle_total}]]></variableExpression>
+	</variable>
+	<variable name="factura_detalle_total_2" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{factura_detalle_total}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="802"/>
+	</background>
+	<title>
+		<band height="273" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="b45778dd-e0f9-49f7-8cb3-be8f1595ff7c" x="0" y="53" width="555" height="217" backcolor="#FFFFFF"/>
+			</rectangle>
+			<line>
+				<reportElement uuid="071669a5-d8f1-41a2-9584-1002e5ad1dc8" x="0" y="118" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="911a4585-0851-4e41-b718-5cf95ac2aba9" x="8" y="95" width="300" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datos_gasolinera_razon_social}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="30523869-bd34-4219-a18c-60c897a2e371" x="328" y="97" width="218" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datos_gasolinera_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d1e7250c-7991-402d-89ba-82ef1a76900a" x="7" y="124" width="300" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datos_gasolinera_ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b7190c97-ddcd-4bf5-a4f6-f294c8107f45" x="10" y="173" width="262" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="20127ab2-0bea-4992-86fa-7f44c43eb48d" x="283" y="173" width="263" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0bfe16fe-6ae6-44b2-9120-974388cba98f" x="283" y="206" width="263" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6b50f23a-ef71-4ca8-9978-5ab6a3bcbd0b" x="13" y="206" width="262" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_cedula_ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fd4a10dd-ede4-4f74-9b80-30b9430ea9b1" x="283" y="242" width="263" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_email}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="6727c99a-ac57-435f-bebc-5c0e1092f832" x="10" y="59" width="152" height="20"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8ad62efe-7141-4dc2-878c-74839fb1f17c" x="191" y="59" width="172" height="31"/>
+				<textElement verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTADO DE CUENTA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d09f0a19-f805-45e4-b7a4-fcf8bc6b42ca" x="424" y="59" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="990b188b-448b-4c93-8241-5672e61a167d" x="506" y="59" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="105" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="e6649ee8-ffff-42f6-bc88-e4f15ac4600e" x="0" y="0" width="555" height="96"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="a207252b-5ffe-42e4-8998-b0e342925263" x="283" y="10" width="115" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha de corte]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="33f28c7f-a041-435c-a810-c476f935a72b" x="400" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fechaf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c0cd13e9-6c05-4847-badc-e4c41d1d8f74" x="9" y="10" width="115" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Fecha inicial]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="744fbed8-78d1-49f5-97fd-3c13813a11ea" x="125" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{fechai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="22bc65c8-3df0-415e-90be-32596c653e66" x="13" y="41" width="108" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Total Consumido]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement uuid="c9e55940-a03a-4f06-b0a9-1f0564f9da55" x="124" y="41" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{factura_detalle_total_2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="70cac8d1-7751-4563-bfc4-185f176ae241" x="0" y="6" width="555" height="24"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c2bba40e-11aa-4494-bb3d-8af90bffbd5a" x="6" y="9" width="121" height="20"/>
+				<textElement/>
+				<text><![CDATA[Numero de Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cbd7e81a-4832-4d6a-aaa2-9c28374ad9fc" x="142" y="10" width="79" height="20"/>
+				<textElement/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff18ef9e-5b5e-4361-8286-72ce5d5cfdc1" x="254" y="9" width="70" height="20"/>
+				<textElement/>
+				<text><![CDATA[hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d57e8172-c91e-451a-bd63-c4899cbbd823" x="349" y="9" width="44" height="20"/>
+				<textElement/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="5916d0a7-f955-45cb-b349-5265a8d19cfc" x="0" y="0" width="555" height="29"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="078e9425-2777-4cdc-a996-abd2166f1890" x="6" y="5" width="121" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{factura_numero}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="d60c10df-439e-473e-ad6d-de4dcb2d0678" x="142" y="6" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{factura_fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement uuid="85950a90-2143-4ce4-8321-c021eefdb496" x="254" y="5" width="70" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{factura_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="edf351d8-20c4-4c89-b389-3bb0c51facaa" x="349" y="5" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{factura_detalle_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="59" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="a3d09555-4bd8-480d-bfd2-0875c1151d3c" x="43" y="7" width="66" height="52"/>
+				<jr:DataMatrix xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" textPosition="bottom">
+					<jr:codeExpression><![CDATA["www.advantechdigital.com"]]></jr:codeExpression>
+					<jr:patternExpression><![CDATA["www.advantechdigital.com"]]></jr:patternExpression>
+				</jr:DataMatrix>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="cd4cc751-5033-4467-b2d4-b983d82bfb7e" x="170" y="7" width="223" height="32"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advantech Digital]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="59" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="ba1dcce8-c08b-43da-a485-facec858dd5a" x="0" y="0" width="555" height="802"/>
+				<subreportParameter name="cliente">
+					<subreportParameterExpression><![CDATA[$P{cliente}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idfactura">
+					<subreportParameterExpression><![CDATA[$P{idfactura}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechai">
+					<subreportParameterExpression><![CDATA[$P{fechai}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fechaf">
+					<subreportParameterExpression><![CDATA[$P{fechaf}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["estado_cuenta_subreport1f.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

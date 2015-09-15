@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa4af053-0386-493f-a5fb-e89fade3f786">
+	<property name="ireport.zoom" value="0.8264462809917359"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="296"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<subDataset name="ventas_pago" whenResourceMissingType="Empty" uuid="bea755d1-65f4-4d2c-a39e-d348407e7a30">
+		<parameter name="fecha" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="horai" class="java.lang.String"/>
+		<parameter name="horaf" class="java.lang.String"/>
+		<parameter name="despachador" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+producto.nombre,
+factura.metodo_pago,
+ factura_detalle.`cantidad` AS factura_detalle_cantidad,
+    
+     factura_detalle.`total` AS factura_detalle_total
+   
+   
+    
+FROM
+     `factura` factura INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+     INNER JOIN `configuracion` configuracion ON factura_detalle.`configuracion_nmanguera` = configuracion.`nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON factura.`usuarios_idusuarios` = usuarios.`idusuarios`
+	where  factura.fecha  BETWEEN $P{fecha} AND $P{fechaf} and usuarios.nombre=$P{despachador} and  factura.hora BETWEEN $P{horai} AND $P{horaf}]]>
+		</queryString>
+		<field name="nombre" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="metodo_pago" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="factura_detalle_cantidad" class="java.math.BigDecimal"/>
+		<field name="factura_detalle_total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="grafico1" uuid="b3f5e14e-de42-40ef-97d9-047b7e0da760">
+		<parameter name="fechai" class="java.lang.String"/>
+		<parameter name="fechaf" class="java.lang.String"/>
+		<parameter name="horai" class="java.lang.String"/>
+		<parameter name="horaf" class="java.lang.String"/>
+		<parameter name="despachador" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+DATE_FORMAT(hora,'%H'":00"),
+producto.nombre,
+factura_detalle.`total` AS factura_detalle_total
+
+FROM
+     `factura` factura INNER JOIN `factura_detalle` factura_detalle ON factura.`idfactura` = factura_detalle.`factura_idfactura`
+     INNER JOIN `configuracion` configuracion ON factura_detalle.`configuracion_nmanguera` = configuracion.`nmanguera`
+     INNER JOIN `producto` producto ON configuracion.`producto_idproducto` = producto.`idproducto`
+     INNER JOIN `usuarios` usuarios ON factura.`usuarios_idusuarios` = usuarios.`idusuarios`
+	where  factura.fecha  BETWEEN $P{fechai} AND $P{fechaf} and usuarios.nombre=$P{despachador} and  factura.hora BETWEEN $P{horai} AND $P{horaf}
+ order by hora]]>
+		</queryString>
+		<field name="DATE_FORMAT(hora,&apos;%H&apos;&quot;:00&quot;)" class="java.lang.String"/>
+		<field name="nombre" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="factura_detalle_total" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="nombre" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="horai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechaf" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT surtidor,manguera,producto.nombre,lec_inicial,lec_final,volumen,punit,ventas,horai,horas from adv_facturacion.reportes_usuario,adv_facturacion.producto,adv_facturacion.configuracion,adv_facturacion.usuarios where manguera=nmanguera  and producto_idproducto=idproducto and reportes_usuario.usuarios_idusuarios=usuarios.idusuarios and 
+usuarios.nombre=$P{nombre} and horai=$P{horai} and fecha=$P{fecha} order by nmanguera]]>
+	</queryString>
+	<field name="surtidor" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="manguera" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lec_inicial" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lec_final" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="volumen" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="punit" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ventas" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horai" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="horas" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="volumen_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{volumen}]]></variableExpression>
+	</variable>
+	<variable name="ventas_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ventas}]]></variableExpression>
+	</variable>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement uuid="e4ba4175-927f-47c5-8fca-534c5ca1ce67" x="0" y="14" width="555" height="106"/>
+				<imageExpression><![CDATA["C:\\Users\\r\\Desktop\\Advgp1.0\\Advgp2.0.0\\ad.png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ea8de034-834a-4d78-9d29-3e57cf7d2d58" x="105" y="54" width="350" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL VENTA DE COMBUSTIBLE POR VENDEDOR]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="38645020-7b50-4caa-8e1b-983fdcac2d7b" x="0" y="34" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="h.mm a">
+				<reportElement uuid="b1c16a01-fd22-46ab-820b-cfe9dd130e96" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1ca46332-f6c4-4edc-9544-f7111ad92454" x="494" y="0" width="50" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="f4484b11-aa20-4c93-b08e-fccdc0688703" x="455" y="0" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horai}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm:ss">
+				<reportElement uuid="f39518a9-97a1-43f4-aa7d-895865816a7c" x="455" y="30" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{horas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="02b5f2c5-ebbf-4503-94b8-3341095d4ef6" x="403" y="0" width="52" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INICIA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4d7bd1dd-d2d6-4d8a-a9b7-ecacbacea4c0" x="375" y="30" width="80" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FINALIZA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="346e71eb-4e35-43d8-b0f1-93226762fb69" x="159" y="0" width="87" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VENDEDOR:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="88ff40b1-3704-43e1-b4f7-1684801f2f4a" x="246" y="0" width="87" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ca42d0c8-d6b1-45bf-8a18-296198b2d840" x="186" y="30" width="60" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="51fd1e39-57e2-4026-a6d2-6da6aa465180" x="246" y="30" width="100" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement uuid="05a32a65-cc99-4034-98b8-fd8174d7f3ec" x="0" y="7" width="555" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="08645ae9-b277-4574-812c-f3b8e3835488" x="11" y="7" width="57" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SURTIDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dac45b10-158c-45a8-8988-d95401b6bf22" x="68" y="7" width="64" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MANGUERA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9125636e-4ce6-4595-957c-bd55df05c4ee" x="132" y="7" width="64" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e1d47b9c-5145-4c7a-92e4-31de37ed0368" x="212" y="7" width="66" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LEC.INICIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c848ddcb-7f00-4c64-964e-7cf7dbaac0f3" x="278" y="7" width="55" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LEC.FINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9637d450-dd45-4287-a6ed-178679b6be47" x="346" y="7" width="62" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GALONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="16dcc779-2ad2-4594-8f6d-531d29827165" x="426" y="7" width="47" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[P.UNIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="436ccf16-04ac-4b47-9c60-881798846aca" x="494" y="7" width="45" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e2ebd211-7386-44fb-bbe4-257dffa7adc3" x="11" y="0" width="42" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{surtidor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d6d0e9f0-953e-493e-86b9-e62e980830f2" x="70" y="0" width="35" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{manguera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="128b1dbd-9717-456c-b61b-ce239ba93d06" x="132" y="0" width="64" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ce5d7473-6771-4bf6-8313-709c1cbcd157" x="426" y="0" width="47" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{punit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b55c9944-0c0f-44c2-b801-b51b49b0251d" x="494" y="0" width="61" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ventas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c4efbbd6-aaa9-43dc-9604-f578a1b09641" x="346" y="0" width="62" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{volumen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e58a7b88-0e00-47bf-b2cb-d65f8d208733" x="212" y="0" width="66" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lec_inicial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="59509443-cdf5-4796-8a62-fc094ff679e9" x="278" y="0" width="55" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{lec_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="391" splitType="Stretch">
+			<crosstab>
+				<reportElement uuid="1bb86cb7-8b63-44ce-b679-112bb67de785" x="0" y="26" width="555" height="100"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="ventas_pago" uuid="6a048dce-3f87-48bc-9028-f3cef907fccd">
+							<datasetParameter name="fecha">
+								<datasetParameterExpression><![CDATA[$P{fecha}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="horai">
+								<datasetParameterExpression><![CDATA[$F{horai}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="horaf">
+								<datasetParameterExpression><![CDATA[$F{horas}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="despachador">
+								<datasetParameterExpression><![CDATA[$P{nombre}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="nombre" width="117" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{nombre}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="5d7243de-05c9-46c0-a2d4-2eefa9784386" style="Crosstab Data Text" x="0" y="0" width="70" height="25"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{nombre}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="ff3c6f20-1e32-440f-9814-82e9bca54f62" x="0" y="0" width="70" height="25"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Totales]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="metodo_pago" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{metodo_pago}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="7cd08c2d-ac47-40e5-9c54-d8634c8934ea" style="Crosstab Data Text" x="0" y="0" width="72" height="30"/>
+								<textElement verticalAlignment="Bottom"/>
+								<textFieldExpression><![CDATA[$V{metodo_pago}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="7ee6d6a7-4ccd-4bb6-bc19-f9bc4c2f77ba" x="0" y="0" width="75" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+								<text><![CDATA[Totales]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="factura_detalle_totalMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{factura_detalle_total}]]></measureExpression>
+				</measure>
+				<crosstabCell width="72" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="ff29442a-7505-4232-aaf0-031c1748188d" style="Crosstab Data Text" x="0" y="0" width="72" height="25"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_detalle_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="72" height="26" rowTotalGroup="nombre">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="436360ea-2071-4783-9a14-8ba4b964323f" style="Crosstab Data Text" x="0" y="1" width="72" height="25"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_detalle_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="76" height="25" columnTotalGroup="metodo_pago">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="0043a1d2-228a-4927-b5bf-b486017f47c3" style="Crosstab Data Text" x="0" y="0" width="75" height="25"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_detalle_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="76" height="26" rowTotalGroup="nombre" columnTotalGroup="metodo_pago">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="28cb9a21-b9f7-4b8b-a5f3-fdcfd59d8639" style="Crosstab Data Text" x="0" y="0" width="75" height="25"/>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$V{factura_detalle_totalMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<rectangle radius="10">
+				<reportElement uuid="7f6554f1-aca1-4715-b02f-816350b7223c" x="0" y="2" width="555" height="21"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="66aba7ca-d646-4dca-989d-d8287959e4ad" x="345" y="2" width="62" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{volumen_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5c4576ee-b392-4821-872b-96d0b4bc553d" x="489" y="2" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{ventas_1}]]></textFieldExpression>
+			</textField>
+			<lineChart>
+				<chart>
+					<reportElement uuid="3808a1b1-319c-44cb-9cf0-2e9c3a752576" x="0" y="171" width="544" height="208"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="grafico1" uuid="cf729681-7b1a-4de5-a1e8-0d60e2f34310">
+							<datasetParameter name="fechai">
+								<datasetParameterExpression><![CDATA[$P{fecha}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="fechaf">
+								<datasetParameterExpression><![CDATA[$P{fechaf}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="horai">
+								<datasetParameterExpression><![CDATA[$F{horai}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="horaf">
+								<datasetParameterExpression><![CDATA[$F{horas}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="despachador">
+								<datasetParameterExpression><![CDATA[$P{nombre}]]></datasetParameterExpression>
+							</datasetParameter>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{nombre}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{DATE_FORMAT(hora,'%H'":00")}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{factura_detalle_total}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</summary>
+</jasperReport>

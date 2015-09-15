@@ -1,0 +1,38 @@
+!R!Estacion de Servicio Banos
+!RUC:          0102595295001
+RAZON SOCIAL: Claudio Vallejo
+DIRECCION:    Huayna Capac
+Obligado a llevar Contabilidad:NO
+Nota de Credito #:    001-050-000000597
+# de Autorizacion: 
+1902201515065101025952950010218235991
+Fecha  Autorizacion: 2015-02-19
+Clave de Acceso:
+1902201504010259529500110010500000005971234567815
+Razon Social/Nombres y Apellidos:
+MARQUEZ MORENO RICARDO VICENTE
+Ruc/CI: 0100000033001
+Fecha Emision: 2015-02-19
+-------------------
+Cod Principal: 1
+Descripcion: Extra
+Precio Unitario: 1.32
+Cantidad: 5.489
+Subtotal: 7.25
+IVA: 0.87
+Total Nota de Credito: 8.12
+-------------------
+Nota de Credito a la factura #: 
+001-051-000000295
+-------------------
+       SISTEMA ADV-BOX -ADVANTECH     
+           2829421 - 0999064457      
+
+
+
+
+
+
+
+
+i
